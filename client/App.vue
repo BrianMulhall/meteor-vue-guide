@@ -10,6 +10,9 @@
             <li>
               <router-link :to="{ name: 'address' }">Address</router-link>
             </li>
+            <li>
+              <router-link :to="{ name: 'live-odds' }">Bettings Odds</router-link>
+            </li>
           </ul>
         </div>
       </div>
