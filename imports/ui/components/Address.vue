@@ -6,11 +6,6 @@
 </div>
 <div class="row">
   <form id="saveAddress">
-    <div class="form-group form-group-lg">
-       <div id="searchInput" class="col-lg-12">
-        <input class="form-control" id="autocomplete" placeholder="Enter an Address" onFocus="geolocate()" type="text"/>
-      </div>
-    </div>
 
       <div class="form-group form-group-lg">
          

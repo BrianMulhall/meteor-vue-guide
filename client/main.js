@@ -1,8 +1,20 @@
-import Vue from 'vue';
-import App from '.imports/ui/components/App.vue';
+import Vue from 'vue'
+import App from '../imports/ui/components/App.vue'
 import router from '../imports/startup/client/router'
-import './main.html';
 
+import './main.html'
+
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
+import VueOnsen from 'vue-onsenui';
+
+
+import VueMeteorTracker from 'vue-meteor-tracker'
+
+// add in the vue plugins that are being used
+Vue.use(VueMeteorTracker)
+
+Vue.use(VueOnsen);
 
 
 Meteor.startup(() => {
@@ -13,9 +25,5 @@ Meteor.startup(() => {
   });
 
 });
-
-Meteor.startup( () => {  
-  $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YGuP67L0NQ2aUpcWmfZtYj4RBnDFO8M&libraries=places&callback=initAutocomplete");
-})
 
 

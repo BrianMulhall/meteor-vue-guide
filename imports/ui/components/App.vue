@@ -5,7 +5,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li>
-              <router-link :to="{ name: 'home' }" exact>Home</router-link>
+              <router-link :to="{ name: 'home' }" exact >Home</router-link>
             </li>
             <li>
               <router-link :to="{ name: 'books' }">Books</router-link>
@@ -43,7 +43,4 @@ p {
   text-align: center;
 }
 
-.router-link-active {
-  
-}
 </style>
