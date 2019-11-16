@@ -5,13 +5,19 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li>
-              <router-link :to="{ name: 'dashboard' }" exact>Dashboard</router-link>
+              <router-link :to="{ name: 'home' }" exact>Home</router-link>
+            </li>
+            <li>
+              <router-link :to="{ name: 'books' }">Books</router-link>
             </li>
             <li>
               <router-link :to="{ name: 'address' }">Address</router-link>
             </li>
             <li>
               <router-link :to="{ name: 'live-odds' }">Bettings Odds</router-link>
+            </li>
+                        <li>
+              <router-link :to="{ name: 'person' }">Person</router-link>
             </li>
           </ul>
         </div>
