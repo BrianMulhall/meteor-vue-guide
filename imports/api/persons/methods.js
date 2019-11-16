@@ -3,6 +3,7 @@ import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Persons } from './persons.js'
 
+
 export const createPerson = new ValidatedMethod({
   name: 'persons.createPerson',
   validate: new SimpleSchema({
