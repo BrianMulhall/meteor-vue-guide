@@ -2,6 +2,8 @@ akryum:vue-component@0.15.1
 akryum:vue-component-dev-client@0.4.7
 akryum:vue-component-dev-server@0.1.4
 allow-deny@1.1.0
+anti:i18n@0.4.3
+aslagle:reactive-table@0.8.45
 autopublish@1.0.7
 autoupdate@1.6.0
 babel-compiler@7.3.4
@@ -16,6 +18,7 @@ caching-compiler@1.2.1
 caching-html-compiler@1.1.3
 callback-hook@1.1.0
 check@1.3.1
+coffeescript@1.0.17
 ddp@1.4.0
 ddp-client@2.3.3
 ddp-common@1.4.0
@@ -58,6 +61,8 @@ mongo-id@1.0.7
 npm-mongo@3.1.2
 observe-sequence@1.0.16
 ordered-dict@1.1.0
+peerlibrary:computed-field@0.3.1
+peerlibrary:data-lookup@0.1.0
 promise@0.11.2
 random@1.1.0
 reactive-var@1.0.11
@@ -78,5 +83,6 @@ tracker@1.2.0
 twbs:bootstrap@3.3.6
 ui@1.0.13
 underscore@1.0.10
+vuejs:blaze-integration@0.2.0
 webapp@1.7.4
 webapp-hashing@1.0.9

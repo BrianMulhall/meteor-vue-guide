@@ -41,6 +41,7 @@
       </form>
     </div>
     <hr />
+    <blaze-template template="reactiveTable" class="table table-bordered table-hover" settings=this.settings ></blaze-template>
     <!-- <div class="row">{{> reactiveTable class="table table-bordered table-hover" settings=settings}}</div> -->
   </div>
 </template>
@@ -51,9 +52,15 @@ export default {
     return {
         sports: [{value: 1, text:"football"},{value:2, text:"baseball"}],
         regions: [{value:1, text: "region a"},{value: 2 , text: "region b"} ],
-        markets: [{value: 1, text: "sample market" }, { value: 2, text: "another test market"}]
+        markets: [{value: 1, text: "sample market" }, { value: 2, text: "another test market"}],
+        settings: {
+            collection: [1,2,3,4,5,6,7,8,9],
+            rowsPerPage: 5,
+            showFilter: true,   
+        }
     };
   },
-  methods: {}
+  methods: {
+  }
 };
 </script>

@@ -44,6 +44,6 @@ p {
 }
 
 .router-link-active {
-  border-bottom-color: bisque;
+  
 }
 </style>
