@@ -1,8 +1,18 @@
 <template>
   <div>
-    <nav>
-      <router-link :to="{ name: 'dashboard' }" exact>Dashboard</router-link>
-      <router-link :to="{ name: 'address' }">Address</router-link>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <router-link :to="{ name: 'dashboard' }" exact>Dashboard</router-link>
+            </li>
+            <li>
+              <router-link :to="{ name: 'address' }">Address</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
     <router-view />
   </div>
@@ -12,15 +22,19 @@
 export default {
   data() {
     return {
-      date: new Date(),
+      date: new Date()
     };
   }
-}
+};
 </script>
 
 <style scoped>
-  p {
-    font-size: 2em;
-    text-align: center;
-  }
+p {
+  font-size: 2em;
+  text-align: center;
+}
+
+.router-link-active {
+  border-bottom-color: bisque;
+}
 </style>
