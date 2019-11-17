@@ -37,7 +37,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+
+@import '{}/node_modules/vue-googlemaps/dist/vue-googlemaps.css';
+
 p {
   font-size: 2em;
   text-align: center;
