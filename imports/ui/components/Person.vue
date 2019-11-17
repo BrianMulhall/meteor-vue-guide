@@ -6,61 +6,58 @@
     <div class="row">
       <div class="col s12">
         <form @submit.prevent="createPerson()">
-          <div class="form-group form-group-lg">
+          <div class="input-field col s12">
             <label for="name">Name</label>
             <input
-              type="text"
-              class="form-control"
               id="name"
-              placeholder="Name"
+              type="text"
               required
               v-model.lazy="person.name"
+              class="validate"
             />
           </div>
 
-          <div class="form-group form-group-lg">
+          <div class="input-field col s12">
             <label for="age">Age</label>
             <input
-              type="number"
-              class="form-control"
               id="age"
-              placeholder="Age"
+              type="number"
               required
               min="0"
               max="120"
               v-model.number="person.age"
+              class="validate"
             />
           </div>
 
-          <div class="form-group form-group-lg">
+          <div class="input-field col s12">
             <label for="height">Height</label>
             <input
-              type="number"
-              class="form-control"
               id="height"
-              placeholder="Height"
+              type="number"
               required
               min="0"
               max="100"
               v-model.number="person.height"
+              class="validate"
             />
           </div>
 
-          <div class="form-group form-group-lg">
+          <div class="input-field col s12">
             <label for="weight">Weight</label>
             <input
-              type="number"
-              class="form-control"
               id="weight"
-              placeholder="Weight"
+              type="number"
               required
               min="0"
               max="1000"
               v-model.number="person.weight"
+              class="validate"
             />
           </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
         </form>
       </div>
     </div>
@@ -70,7 +67,7 @@
           Age:    {{ person.age }}
           Height: {{ person.height }}
           Weight: {{ person.weight }}
-          Persons Length: {{ fetchPeople() }}
+          Persons Length: {{ persons.length }}
         </pre
       >
     </div>
@@ -88,9 +85,9 @@ export default {
     return {
       person: {
         name: "",
-        age: 0,
-        height: 0,
-        weight: 0
+        age: undefined,
+        height: undefined,
+        weight: undefined
       },
       persons: []
     };
