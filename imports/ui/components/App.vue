@@ -1,23 +1,17 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Susco</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <router-link class="navbar-brand" :to="{ name: 'home' }" exact>Susco</router-link>
       <button
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'home' }" exact>Home</router-link>
-          </li>
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'books' }">Books</router-link>
           </li>
@@ -48,4 +42,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.router-link-active{
+  color: rgba(255,255,255,.5);
+  border:none;
+}
+</style>
