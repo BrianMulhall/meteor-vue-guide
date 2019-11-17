@@ -7,18 +7,11 @@ import './main.html'
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import VueOnsen from 'vue-onsenui';
-import VueGoogleMaps from 'vue-googlemaps';
 
 import VueMeteorTracker from 'vue-meteor-tracker'
 
 // add in the vue plugins that are being used
 Vue.use(VueMeteorTracker)
-
-Vue.use(VueGoogleMaps, {load: {
-    apiKey: 'AIzaSyCCqB8lGm6qfoLn4J4JebC5t3huBEvRIMc',
-    libraries: ['places'],
-  }
-})
 
 Vue.use(VueOnsen);
 

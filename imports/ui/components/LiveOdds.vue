@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="page-header">
       <h1>Sports Betting Information</h1>
     </div>
@@ -7,10 +7,10 @@
     <div class="row">
       <form id="requestOddsData">
         <fieldset>
-          <div class="col-md-12">
+          <div class="col">
             <legend>Get the Odds:</legend>
           </div>
-          <div class="col-md-4">
+          <div class="col">
             <div class="form-group">
               <select name="sport" class="form-control" id="sport" required>
                 <option disabled selected>Select a Sport</option>
@@ -18,7 +18,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col">
             <div class="form-group">
               <select class="form-control" id="region" required>
                 <option disabled selected>Select a Region</option>
@@ -26,7 +26,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col">
             <div class="form-group">
               <select class="form-control" id="market" required>
                 <option disabled selected>Select a Market</option>
@@ -34,15 +34,12 @@
               </select>
             </div>
           </div>
-          <div class="col-md-12">
+          <div class="col">
             <button type="submit" class="pull-right btn btn-primary">Submit</button>
           </div>
         </fieldset>
       </form>
     </div>
-    <hr />
-    <blaze-template template="reactiveTable" class="table table-bordered table-hover" settings=this.settings ></blaze-template>
-    <!-- <div class="row">{{> reactiveTable class="table table-bordered table-hover" settings=settings}}</div> -->
   </div>
 </template>
 

@@ -3,7 +3,7 @@
   <div>
 
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col">
         <form  @submit.prevent="createPerson()">
           <div class="form-group form-group-lg">
             <label for="name">Name</label>
@@ -63,7 +63,9 @@
         </form>
       </div>
       
-      <div>  
+     
+    </div>
+   <div style="margin-top:60px"class="row">  
         <pre>
           Name:   {{person.name}}
           Age:    {{person.age}}
@@ -73,7 +75,7 @@
         </pre>
       </div>
 
-    </div>
+
 
   </div>
 
