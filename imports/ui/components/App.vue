@@ -1,35 +1,26 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <router-link class="navbar-brand" :to="{ name: 'home' }" exact>Susco</router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'books' }">Books</router-link>
+    <nav>
+       <div class="nav-wrapper">
+       <router-link  class="brand-logo" :to="{ name: 'home' }" exact>Susco</router-link>
+     
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <router-link :to="{ name: 'books' }">Books</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'address' }">Address</router-link>
+          <li>
+            <router-link :to="{ name: 'address' }">Address</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'live-odds' }">Bettings Odds</router-link>
+          <li>
+            <router-link :to="{ name: 'live-odds' }">Bettings Odds</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'person' }">Person</router-link>
+          <li>
+            <router-link :to="{ name: 'person' }">Person</router-link>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="container">
       <router-view />
-    </div>
   </div>
 </template>
 

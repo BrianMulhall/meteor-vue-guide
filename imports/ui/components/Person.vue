@@ -1,10 +1,11 @@
 <template>
-
-  <div>
-
+  <div class="container">
+    <div class="page-header">
+      <h1>Creating a Person</h1>
+    </div>
     <div class="row">
-      <div class="col">
-        <form  @submit.prevent="createPerson()">
+      <div class="col s12">
+        <form @submit.prevent="createPerson()">
           <div class="form-group form-group-lg">
             <label for="name">Name</label>
             <input
@@ -59,69 +60,62 @@
             />
           </div>
 
-          <button  type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
-      
-     
     </div>
-   <div style="margin-top:60px"class="row">  
-        <pre>
-          Name:   {{person.name}}
-          Age:    {{person.age}}
-          Height: {{person.height}}
-          Weight: {{person.weight}}
-          Persons Length: {{fetchPeople()}}
-        </pre>
-      </div>
-
-
-
+    <div style="margin-top:60px" class="row">
+      <pre>
+          Name:   {{ person.name }}
+          Age:    {{ person.age }}
+          Height: {{ person.height }}
+          Weight: {{ person.weight }}
+          Persons Length: {{ fetchPeople() }}
+        </pre
+      >
+    </div>
   </div>
-
 </template>
 
-
 <script>
-import { Meteor } from 'meteor/meteor'
-import { createPerson } from '../../api/persons/methods.js'
-import { Persons } from '../../api/persons/persons.js'
+import { Meteor } from "meteor/meteor";
+import { createPerson } from "../../api/persons/methods.js";
+import { Persons } from "../../api/persons/persons.js";
 
 export default {
   name: "Person",
-  data () {
+  data() {
     return {
       person: {
-        name: '',
+        name: "",
         age: 0,
         height: 0,
         weight: 0
       },
-      persons:[]
+      persons: []
+    };
+  },
+  methods: {
+    createPerson: function() {
+      createPerson.call(this.person);
+    },
+    fetchPeople: function() {
+      return Persons.find({}).length;
     }
   },
-    methods: {
-      createPerson: function(){
-        createPerson.call( this.person);
-      },
-      fetchPeople: function(){
-        return Persons.find({}).length;
-      }
-
-    },
-     meteor: {
+  meteor: {
     // Subscriptions
-      $subscribe: {
-        'persons': [],
-      },
-      persons () {
-        return Persons.find({});
-      }
+    $subscribe: {
+      persons: []
     },
-    computed: {
-      length () {
-      return this.persons.length
-      },
+    persons() {
+      return Persons.find({});
+    }
+  },
+  computed: {
+    length() {
+      return this.persons.length;
     }
   }
+};
 </script>
