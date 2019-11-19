@@ -4,13 +4,14 @@ import router from '../imports/startup/client/router'
 import VueMeteorTracker from 'vue-meteor-tracker'
 import '@progress/kendo-ui'
 import '@progress/kendo-theme-default/dist/all.css'
-import { Calendar } from '@progress/kendo-dateinputs-vue-wrapper'
 import { AutoComplete, ComboBox, DropDownList, MultiSelect, MultiColumnComboBox, 
          MultiColumnComboBoxColumn, DropdownsInstaller } from '@progress/kendo-dropdowns-vue-wrapper'
-import { Grid } from '@progress/kendo-vue-grid'
+import { Grid, GridToolbar } from '@progress/kendo-vue-grid';
+import { process } from '@progress/kendo-data-query';
 
-Vue.component(Calendar.name, Calendar)
 Vue.component('Grid', Grid);
+Vue.component('grid-toolbar', GridToolbar);
+
 
 Vue.use(DropdownsInstaller)
 Vue.use(VueMeteorTracker)
@@ -23,7 +24,7 @@ Meteor.startup(() => {
     name: "App",
     el: '#app',
     components:{
-      Calendar,
+
       AutoComplete,
        ComboBox,
        DropDownList,

@@ -1,8 +1,18 @@
 import { Meteor } from 'meteor/meteor';
+import { Items } from '../imports/api/items/items.js'
+
 
 import '../imports/startup/server/index.js'
 
 
-Meteor.startup(() => {
-  
-});
+if (Meteor.isServer) {
+
+  var Api = new Restivus({
+    useDefaultAuth: true,
+    prettyJson: true
+  });
+  console.log(Api);
+
+  Api.addCollection(Items);
+
+}

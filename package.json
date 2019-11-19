@@ -18,6 +18,7 @@
     "@progress/kendo-vue-grid": "^0.3.7",
     "@progress/kendo-vue-intl": "^0.3.7",
     "@progress/kendo-vue-popup": "^0.3.7",
+    "bcrypt": "^3.0.7",
     "meteor-node-stubs": "^0.4.1",
     "onsenui": "^2.10.10",
     "simpl-schema": "^1.5.6",

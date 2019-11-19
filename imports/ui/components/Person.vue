@@ -133,16 +133,13 @@ export default {
           console.log("Grid data bound");
       },
       itemChange: function (e) {
-            const data = this.gridData.slice();
+            const data = this.persons.slice();
             const index = data.findIndex(d => d.ProductID === e.dataItem.ProductID);
             data[index] = { ...data[index], [e.field]: e.value };
-            this.gridData = data;
-            Vue.set(e.dataItem, e.field, e.value);
+            this.persons = data;
       },
       rowClick: function (e) {
             this.editID = e.dataItem.ProductID;
-
-            Vue.set(e.dataItem, 'inEdit', true);
       },
       closeEdit(e) {
             if (e.target === e.currentTarget) {
@@ -150,10 +147,10 @@ export default {
             }
       },
       addRecord() {
-            const newRecord = { ProductID: this.gridData.length + 1 };
-            const data = this.gridData.slice();
+            const newRecord = { ProductID: this.persons.length + 1 };
+            const data = this.persons.slice();
             data.unshift(newRecord);
-            this.gridData = data;
+            this.persons = data;
             this.editID = newRecord.ProductID;
       }
   },
