@@ -11,7 +11,6 @@ if (Meteor.isServer) {
     useDefaultAuth: true,
     prettyJson: true
   });
-  console.log(Api);
 
   Api.addCollection(Items);
 

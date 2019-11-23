@@ -167,6 +167,7 @@ export default {
     length() {
       return this.persons.length;
     }
-  }
+  },
+  
 };
 </script>

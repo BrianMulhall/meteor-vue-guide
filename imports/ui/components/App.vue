@@ -36,8 +36,9 @@
          <router-link :to="{ name: 'person' }">Person</router-link>
         </li>
     </ul>
-
-    <router-view />
+    <transitions name="fade" mode="out-in">
+      <router-view />
+    </transitions>
   </div>
 </template>
 
