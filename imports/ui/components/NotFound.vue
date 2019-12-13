@@ -2,7 +2,7 @@
 <main class="not-found">
     <h1>This Page Cannot be Found</h1>
     <p class="more-info">
-        Sorry, but we can't the page you're looking for.<br>>
+        Sorry, but we can't the page you're looking for.<br>
         It might have been moved or deleted.<br>
         Check your spelling or click below to return to the homepage.
     </p>

@@ -1,27 +1,58 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-import Home     from '../../ui/components/Home.vue'
-import Books    from '../../ui/components/Books.vue'
-import Address  from '../../ui/components/Address.vue'
-import LiveOdds from '../../ui/components/LiveOdds.vue'
-import Person   from '../../ui/components/Person.vue'
-import NotFound from '../../ui/components/NotFound.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-  { path: '/',           name: 'home',       component: Home },
-  { path: '/books',      name: 'books',      component: Books },
-  { path: '/address',    name: 'address',    component: Address },
-  { path: '/live-odds',  name: 'live-odds',  component: LiveOdds },
-  { path: '/person',     name: 'person',     component: Person },
-  { path: '*',                               component: NotFound }
-  ]
+  { 
+    path: "/",
+    name: "home",
+    component: () => import(/* webpackChunkName: "home" */ '../../ui/components/Home.vue')
+  },
+  { 
+    path: "/books", 
+    name: "books", 
+    component: () => import(/* webpackChunkName: "books" */ '../../ui/components/Books.vue')
+  },
+  { 
+    path: "/person", 
+    name: "person", 
+    component: () => import(/* webpackChunkName: "person" */ '../../ui/components/Person.vue')
+  },
+  { 
+    path: "/register", 
+    name: "register", 
+    component: () => import(/* webpackChunkName: "register" */ '../../ui/components/Register.vue')
+  },
+  { 
+    path: "/login", 
+    name: "login", 
+    component: () => import(/* webpackChunkName: "login" */ '../../ui/components/Login.vue')
+  },
+  { 
+    path: "*",
+    name: 'notFound',
+    component: () => import(/* webpackChunkName: "notFound" */ '../../ui/components/NotFound.vue')
+  }
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history", // hash, history and abstract are the three options
   routes,
-})
+  scrollbehavior (to, from, savedPosition){
+    if(savedPosiiton){
+      return savedPosition; // restore the page to where it was the last time you were on it
+    }
+    if(to.hash){
+      return {selector: to.hash}
+    }
+    return {x:0,y:0} // the top of the page is the last choice
+  }
 
-export default router
+});
+
+
+
+
+export default router;

@@ -71,20 +71,6 @@
         </pre
       >
     </div>
-    <Grid v-bind:style="{height: '280px'}"
-          v-bind:data-items="persons"
-          v-bind:columns="columns"
-          v-bind:edit-field="'inEdit'"
-          @rowclick="rowClick"
-          @itemchange="itemChange">
-            <grid-toolbar>
-            <div @click="closeEdit">
-                <button title="Add new" class="k-button k-primary" @click='addRecord' >
-                    Add new
-                </button>
-            </div>
-        </grid-toolbar>
-    </Grid>
   </div>
 </template>
 
@@ -104,12 +90,6 @@ export default {
         weight: undefined
       },
       persons: [],
-       columns: [
-                { field: 'name', title: 'name'},
-                { field: 'age', title: 'Age' },
-                { field: 'height', title: 'Height' },
-                { field: 'weight', title: 'Weight' }
-            ]
     };
   },
   methods: {
@@ -119,40 +99,6 @@ export default {
     fetchPeople: function() {
       return Persons.find({}).length;
     },
-     onChange: function(ev) {
-        var selected = $.map(ev.sender.select(), function(item) {
-            return $(item).text();
-        });
-
-        console.log("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
-      },
-      onDataBinding: function(ev) {
-          console.log("Grid data binding");
-      },
-      onDataBound: function(ev) {
-          console.log("Grid data bound");
-      },
-      itemChange: function (e) {
-            const data = this.persons.slice();
-            const index = data.findIndex(d => d.ProductID === e.dataItem.ProductID);
-            data[index] = { ...data[index], [e.field]: e.value };
-            this.persons = data;
-      },
-      rowClick: function (e) {
-            this.editID = e.dataItem.ProductID;
-      },
-      closeEdit(e) {
-            if (e.target === e.currentTarget) {
-                this.editID = null;
-            }
-      },
-      addRecord() {
-            const newRecord = { ProductID: this.persons.length + 1 };
-            const data = this.persons.slice();
-            data.unshift(newRecord);
-            this.persons = data;
-            this.editID = newRecord.ProductID;
-      }
   },
   meteor: {
     // Subscriptions
