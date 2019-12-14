@@ -28,18 +28,21 @@
         </div>
 
         <div class="row">
+          <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate" v-model="email" />
             <label for="username">Email</label>
+            <input id="email" type="email" class="validate" v-model="email" />
+             <span>{{ errors[0] }}</span>
           </div>
+           </ValidationProvider>
         </div>
 
         <ValidationObserver>
           <div class="row">
             <ValidationProvider
-              rules="confirmed:confirmation"
-              name="Password"
               v-slot="{ errors }"
+              name="Confirm Password"
+              vid="password"
             >
               <div class="input-field col s12">
                 <label for="password">Password</label>
@@ -53,11 +56,12 @@
               </div>
             </ValidationProvider>
           </div>
+
           <div class="row">
             <ValidationProvider
-              v-slot="{ errors }"
+              rules="confirmed:password"
               name="Confirm Password"
-              vid="confirmation"
+              v-slot="{ errors }"
             >
               <div class="input-field col s12">
                 <label for="confrimPassword">Confirm Password</label>
@@ -87,6 +91,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { Accounts } from "meteor/accounts-base";
 
 export default {
@@ -103,12 +108,14 @@ export default {
       event.preventDefault();
 
       Accounts.createUser(
-        { username: this.username, password: this.password },
+        { username: this.username,email: this.email, password: this.password },
         function(err) {
           if (err) {
-            console.log("Error", err);
+            Vue.toasted.error(err.reason);
+            
           } else {
-            console.log("user created");
+            Vue.toasted.success("User Account Created");
+            this.$router.push('login')
           }
         }
       );

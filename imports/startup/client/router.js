@@ -40,6 +40,8 @@ const routes = [
 const router = new VueRouter({
   mode: "history", // hash, history and abstract are the three options
   routes,
+  linkActiveClass: "active",
+  linkExactActiveClass: "active",
   scrollbehavior (to, from, savedPosition){
     if(savedPosiiton){
       return savedPosition; // restore the page to where it was the last time you were on it

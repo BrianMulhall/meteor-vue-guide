@@ -3,6 +3,7 @@
     <nav>
       <div class="nav-wrapper">
         <router-link class="brand-logo" :to="{ name: 'home' }">
+          <i class="material-icons">cloud</i>
           Susco
         </router-link>
         <a href="#" data-target="side-menu" class="sidenav-trigger">
@@ -10,7 +11,7 @@
         </a>
         <ul class="right hide-on-med-and-down">
           <li>
-            <router-link :to="{ name: 'register' }">
+            <router-link  :to="{ name: 'register' }">
               Register
             </router-link>
           </li>
@@ -20,7 +21,7 @@
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'books' }">
+            <router-link  :to="{ name: 'books' }">
               Books
             </router-link>
           </li>
@@ -29,6 +30,7 @@
               Person
             </router-link>
           </li>
+          <li><a class="waves-effect waves-light btn">Log Off</a></li>
         </ul>
       </div>
     </nav>
