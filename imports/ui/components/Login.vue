@@ -5,7 +5,7 @@
     </div>
 
     <div class="row">
-      <form id="login" class="col s12">
+      <form id="login" class="col s12" @submit.prevent="login">
         <div class="row">
           <div class="input-field col s12">
             <input
@@ -14,7 +14,7 @@
               class="validate"
               v-model="username"
             />
-            <label for="username">UserName</label>
+            <label class="active" for="username">UserName</label>
           </div>
         </div>
 
@@ -26,26 +26,14 @@
               class="validate"
               v-model="password"
             />
-            <label for="password">Password</label>
+            <label class="active" for="password">Password</label>
           </div>
         </div>
 
-        <button
-          class="btn waves-effect waves-light"
-          type="submit"
-          @click="login"
-        >
-          Login
-          
-        </button>
+        <button class="btn waves-effect waves-light" type="submit" > Login </button>
 
         <button
-          class="btn waves-effect waves-light"
-          @click="register"
-        >          Register
-
-
-        </button>
+          class="btn waves-effect waves-light" @click="register" > Register </button>
       </form>
     </div>
   </div>
@@ -63,19 +51,22 @@ export default {
     };
   },
   methods: {
-    login(event) {    
-        event.preventDefault(); 
-        
-        Meteor.loginWithPassword( this.username, this.password, function(err){
-        if(err) console.log(err);
-        
-      });
-                this.$router.replace({ path: '/' })
+    login(evt) {     
+        Meteor.loginWithPassword( this.username, this.password, 
+            function(err){
+                if(err) { 
+                    console.log(err);
+                }
+            }
+        );
+      this.$router.push({ path: '/' })
+                
         
     },
     register(event) {
         event.preventDefault(); 
-        this.$router.replace({ path: '/register' })
+         this.$router.push({ path: '/register' })
+        
     }
   }
 };

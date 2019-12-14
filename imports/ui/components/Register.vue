@@ -5,7 +5,7 @@
     </div>
 
     <div class="row">
-      <form id="login">
+      <form id="login" @submit.prevent="register">
         <div class="row">
           
             <ValidationProvider
@@ -14,7 +14,7 @@
               v-slot="{ errors }"
             >
               <div class="input-field col s12">
-              <label for="username">UserName</label>
+              <label class="active" for="username">UserName</label>
               <input
                 id="username"
                 type="text"
@@ -30,7 +30,7 @@
         <div class="row">
           <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
           <div class="input-field col s12">
-            <label for="username">Email</label>
+            <label class="active" for="username">Email</label>
             <input id="email" type="email" class="validate" v-model="email" />
              <span>{{ errors[0] }}</span>
           </div>
@@ -45,7 +45,7 @@
               vid="password"
             >
               <div class="input-field col s12">
-                <label for="password">Password</label>
+                <label class="active" for="password">Password</label>
                 <input
                   id="password"
                   type="password"
@@ -64,7 +64,7 @@
               v-slot="{ errors }"
             >
               <div class="input-field col s12">
-                <label for="confrimPassword">Confirm Password</label>
+                <label class="active" for="confrimPassword">Confirm Password</label>
                 <input
                   id="confrimPassword"
                   type="password"
@@ -77,11 +77,7 @@
           </div>
         </ValidationObserver>
 
-        <button
-          class="btn waves-effect waves-light"
-          type="submit"
-          @click="register"
-        >
+        <button class="btn waves-effect waves-light" type="submit" >
           Register
           <i class="material-icons right">send</i>
         </button>
@@ -104,9 +100,7 @@ export default {
     };
   },
   methods: {
-    register(event) {
-      event.preventDefault();
-
+    register(evt) {
       Accounts.createUser(
         { username: this.username,email: this.email, password: this.password },
         function(err) {

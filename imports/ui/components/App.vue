@@ -69,7 +69,7 @@ export default {
         if(err) console.log(err);
         
       });
-        this.$router.replace({ path: '/login' })
+        this.$router.push({ path: '/login' })
     }
   },
   computed: {
