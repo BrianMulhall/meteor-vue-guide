@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import { Meteor } from 'meteor/meteor'
 
 Vue.use(VueRouter);
 
@@ -54,7 +54,18 @@ const router = new VueRouter({
 
 });
 
+// router.beforeEach(function (to, from, next) {
+//   let userId = Meteor.userId();
+//   console.log('beforeEach', to.path + ' - Auth: ' + userId)
 
+//   if ((to.path !== '/login' && to.path !== 'login') && !userId) {
+//     next({ path: '/login' })
+//   } else if ((to.path === '/login' || to.path === 'login') && userId) {
+//     next({ path: '/' })
+//   } else {
+//     next()
+//   }
+// })
 
 
 export default router;
