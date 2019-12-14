@@ -20,7 +20,7 @@
             </router-link>
 
             <li>
-              <a class="waves-effect waves-light btn" @click="logOff"
+              <a class="waves-effect waves-light btn" @click.prevent="logOff"
                 >Log Off</a
               >
             </li>
@@ -64,18 +64,16 @@ export default {
   },
   methods: {
     logOff: function(event) {
-      event.preventDefault(); 
       Meteor.logout(function(err){
         if(err) console.log(err);
-        
       });
-        this.$router.push({ path: '/login' })
+      this.$store.commit('toggleLoggedInStatus',false);
+      this.$router.push({ path: '/login' })
     }
   },
   computed: {
     isLoggedIn: function() {
-      let isLoggedIn = this.userId != null;
-      return isLoggedIn;
+      return this.$store.getters.getLoggedInStatus
     }
   },
 

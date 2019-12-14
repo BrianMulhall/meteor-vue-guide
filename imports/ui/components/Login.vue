@@ -59,7 +59,8 @@ export default {
                 }
             }
         );
-      this.$router.push({ path: '/' })
+        this.$store.commit('toggleLoggedInStatus',true);
+        this.$router.push({ path: '/' })
                 
         
     },

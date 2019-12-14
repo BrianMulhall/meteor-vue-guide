@@ -1,29 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { Meteor } from 'meteor/meteor'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
-    isUserLoggedIn: undefined
+    isUserLoggedIn: false
   },
   
   mutations: {
-    bearer (state, payload) {
-      state.user.bearer = payload
-    }
+    toggleLoggedInStatus(state, loggedIn) {
+        state.isUserLoggedIn = loggedIn;
+      }
   },
 
-  actions: {
-    bearer (context, payload) {
-      context.commit('bearer', payload)
-    }
+  actions: { 
   },
 
   getters: {
-    bearer: state => {
-      return state.user.bearer
+    getLoggedInStatus: state => {
+      return state.isUserLoggedIn
     }
   }
 
-})
+});
+
+export default store;
