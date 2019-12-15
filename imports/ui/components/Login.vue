@@ -54,16 +54,14 @@ export default {
   methods: {
     login(evt) {     
         Meteor.loginWithPassword( this.username, this.password, 
-            function(err){
-                if(err) { 
-                    console.log(err);
-                }
-            }
-        );
-        this.$store.commit('toggleLoggedInStatus',true);
-        this.$router.push({ path: '/' })
-                
-        
+           (function (err) {
+                  if (err) {
+                    this.$toasted.error(err.reason);
+                  } else {
+                    this.$store.commit('toggleLoggedInStatus',true);
+                    this.$router.push({ path: '/' })
+                  }
+            }).bind(this))
     },
     register(event) {
       this.$router.push({ path: '/register' })

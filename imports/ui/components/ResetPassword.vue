@@ -68,9 +68,14 @@ export default {
   },
   methods: {
     resetPassword(evt) {
-      Accounts.resetPassword(this.token, this.password, function(err){
-        if(err) console.log(err)
-      } );
+      Accounts.resetPassword(this.token, this.password, (function (err) {
+                  if (err) {
+                    this.$toasted.error(err.reason);
+                  } else {
+                    this.$toasted.info('Password has been reset');
+                    this.$router.push({ path: '/login' })
+                  }
+            }).bind(this)) 
      
     }
     }

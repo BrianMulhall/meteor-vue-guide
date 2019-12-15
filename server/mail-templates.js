@@ -38,3 +38,23 @@ Accounts.emailTemplates.resetPassword.html = function(user,url){
           url;
 }; 
 
+
+// Enrollment Email Templates
+Accounts.emailTemplates.enrollAccount.subject = function(user){
+  return 'Account Enrollment';
+};
+
+Accounts.emailTemplates.enrollAccount.text = function(user,url){
+  return "An account has been created for you!\n" +
+          "To set your initial password please follow the link below:\n\n" + 
+          url;
+}; 
+
+Accounts.emailTemplates.enrollAccount.html = function(user,url){
+  return "<h1>An account has been created for you!</h1>" +
+          "<p>To set your initial password please follow the link below:</p>" + 
+          url;
+}; 
+
+
+

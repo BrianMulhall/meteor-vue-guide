@@ -49,7 +49,14 @@ export default {
   },
   methods: {
     forgotPassword(evt) {
-        Accounts.forgotPassword({ email: this.email });
+        Accounts.forgotPassword({ email: this.email },(function (err) {
+                  if (err) {
+                    this.$toasted.error(err.reason);
+                  } else {
+                    this.$toasted.info('Password reset email has been sent');
+                    this.$router.push({ path: '/login' })
+                  }
+            }).bind(this))
     }
 
     }

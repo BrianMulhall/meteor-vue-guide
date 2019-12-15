@@ -57,9 +57,8 @@
        </div> 
     
 </form>
-<div id="geocodeBtnRow" class="row">
+<div class="row">
   <div class="col">
-    <button type="button" id="geocodeBtn" class="btn btn-primary"> Geocode an Address </button>
     <button type="button" id="saveBtn" class="btn btn-secondary"> Save Address </button>
   </div>
 </div>

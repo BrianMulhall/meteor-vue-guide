@@ -101,9 +101,14 @@ export default {
   },
   methods: {
     register(evt) {
-      Accounts.createUser( { 'username': this.username,  'email': this.email,  'password': this.password }, function(err){
-        if(err) console.log(err)
-      } );
+      Accounts.createUser( { 'username': this.username,  'email': this.email,  'password': this.password }, (function (err) {
+                  if (err) {
+                    this.$toasted.error(err.reason);
+                  } else {
+                    this.$toasted.info('Account has been registered');
+                    this.$router.push({ path: '/login' })
+                  }
+            }).bind(this));
       //registerAccount.call( { username: this.username,  email: this.email,  password: this.password } );
     }
 

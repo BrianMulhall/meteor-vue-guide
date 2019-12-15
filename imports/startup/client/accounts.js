@@ -15,8 +15,20 @@ Accounts.onEmailVerificationLink(function(token, done) {
 
   });
 
-
   Accounts.onResetPasswordLink(function (token, done) {
+
     console.log('reseting password')
+    router.push( { path: `/resetPassword/${token}` } , function(){
+        console.log('successfully');
+        done();
+    }, 
+    function(err){
+        console.log('error', err);
+    })
+    
   });
 
+
+  Accounts.onEnrollmentLink(function (token, done) {
+    console.log('enrollment triggered')
+  });

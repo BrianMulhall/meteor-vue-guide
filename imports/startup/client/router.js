@@ -2,14 +2,14 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import { Meteor } from 'meteor/meteor'
 import store  from './store'
-
+import { Home } from '../../ui/components/Home.vue'
 Vue.use(VueRouter);
 
 const routes = [
   { 
     path: "/",
     name: "home",
-    component: () => import(/* webpackChunkName: "home" */ '../../ui/components/Home.vue')
+    component: Home
   },
   { 
     path: "/books", 
@@ -27,7 +27,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../../ui/components/Register.vue')
   },
   { 
-    path: "/reset-password/:token", 
+    path: "/resetPassword/:token", 
     name: "resetPassword", 
     component: () => import(/* webpackChunkName: "resetPassword" */ '../../ui/components/ResetPassword.vue')
   },
@@ -49,7 +49,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "hash", // hash, history and abstract are the three options
+  mode: "history", // hash, history and abstract are the three options
   routes,
   linkActiveClass: "active",
   linkExactActiveClass: "active",
