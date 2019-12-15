@@ -5,7 +5,7 @@ Accounts.emailTemplates.from = "brian.e.mulhall@gmail.com";
 
 // Email Verification Template
 Accounts.emailTemplates.verifyEmail.subject = function(user){
-  return 'Confirm Your Email Address, ' + user.username;
+  return 'Confirm Your Email Address';
 };
 
 Accounts.emailTemplates.verifyEmail.text = function(user,url){

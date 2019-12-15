@@ -20,8 +20,11 @@ Accounts.config({
 
 
 Accounts.urls.resetPassword = function reset(token) {
-  return Meteor.absoluteUrl('resetPassword/' + token);
+  return Meteor.absoluteUrl( `resetPassword/${token}` );
 };
 
+Accounts.urls.verifyEmail = function verify(token) {
+  return Meteor.absoluteUrl( `verifyEmail/${token}` );
+};
 
   
