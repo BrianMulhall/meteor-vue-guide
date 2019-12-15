@@ -27,6 +27,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../../ui/components/Register.vue')
   },
   { 
+    path: "/reset-password/:token", 
+    name: "resetPassword", 
+    component: () => import(/* webpackChunkName: "resetPassword" */ '../../ui/components/ResetPassword.vue')
+  },
+  { 
+    path: "/forgotPassword", 
+    name: "forgotPassword", 
+    component: () => import(/* webpackChunkName: "forgotPassword" */ '../../ui/components/ForgotPassword.vue')
+  },
+  { 
     path: "/login", 
     name: "login", 
     component: () => import(/* webpackChunkName: "login" */ '../../ui/components/Login.vue')
@@ -55,17 +65,17 @@ const router = new VueRouter({
 
 });
 
-router.beforeEach(function (to, from, next) {
+// router.beforeEach(function (to, from, next) {
   
 
-  if ((to.path !== '/login' && to.path !== 'login' && to.path !== '/register' && to.path !== 'register' ) && !store.getters.getLoggedInStatus) {
-    next({ path: '/login' })
-  } else if ((to.path === '/login' || to.path === 'login') && store.getters.getLoggedInStatus) {
-    next({ path: '/' })
-  } else {
-    next()
-  }
-})
+//   if ((to.path !== '/login' && to.path !== 'login' && to.path !== '/register' && to.path !== 'register' ) && !store.getters.getLoggedInStatus) {
+//     next({ path: '/login' })
+//   } else if ((to.path === '/login' || to.path === 'login') && store.getters.getLoggedInStatus) {
+//     next({ path: '/' })
+//   } else {
+//     next()
+//   }
+// })
 
 
 export default router;

@@ -32,8 +32,9 @@
 
         <button class="btn waves-effect waves-light" type="submit" > Login </button>
 
-        <button
-          class="btn waves-effect waves-light" @click="register" > Register </button>
+        <button class="btn waves-effect waves-light" @click.prevent="register" > Register </button>
+
+        <button class="btn waves-effect waves-light" @click.prevent="resetPassword" > Reset Password </button>
       </form>
     </div>
   </div>
@@ -65,9 +66,11 @@ export default {
         
     },
     register(event) {
-        event.preventDefault(); 
-         this.$router.push({ path: '/register' })
+      this.$router.push({ path: '/register' })
         
+    },
+    resetPassword(event){
+      this.$router.push({ path: '/forgotPassword' })
     }
   }
 };
