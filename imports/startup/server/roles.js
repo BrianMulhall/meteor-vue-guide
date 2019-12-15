@@ -1,6 +1,9 @@
-import { Roles } from 'alanning:roles'
 
-Roles.createRole('user');
-Roles.createRole('admin');
 
-Roles.addUsersToRoles(admin, 'admin', null);
+if(Meteor.roles.find({}).fetch().length == 0){
+
+    Roles.createRole('user');
+    Roles.createRole('admin');
+}
+
+

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from '../imports/ui/components/App.vue'
 import router from '../imports/startup/client/router'
 import store  from '../imports/startup/client/store'
+import '../imports/startup/client/accounts.js'
 import VueMeteorTracker from 'vue-meteor-tracker'
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver } from 'vee-validate'

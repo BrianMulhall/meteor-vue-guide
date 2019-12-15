@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import { Meteor } from 'meteor/meteor'
+import store  from './store'
 
 Vue.use(VueRouter);
 
@@ -38,7 +39,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history", // hash, history and abstract are the three options
+  mode: "hash", // hash, history and abstract are the three options
   routes,
   linkActiveClass: "active",
   linkExactActiveClass: "active",
@@ -54,18 +55,17 @@ const router = new VueRouter({
 
 });
 
-// router.beforeEach(function (to, from, next) {
-//   let userId = Meteor.userId();
-//   console.log('beforeEach', to.path + ' - Auth: ' + userId)
+router.beforeEach(function (to, from, next) {
+  
 
-//   if ((to.path !== '/login' && to.path !== 'login') && !userId) {
-//     next({ path: '/login' })
-//   } else if ((to.path === '/login' || to.path === 'login') && userId) {
-//     next({ path: '/' })
-//   } else {
-//     next()
-//   }
-// })
+  if ((to.path !== '/login' && to.path !== 'login' && to.path !== '/register' && to.path !== 'register' ) && !store.getters.getLoggedInStatus) {
+    next({ path: '/login' })
+  } else if ((to.path === '/login' || to.path === 'login') && store.getters.getLoggedInStatus) {
+    next({ path: '/' })
+  } else {
+    next()
+  }
+})
 
 
 export default router;

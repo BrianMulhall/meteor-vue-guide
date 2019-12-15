@@ -2,13 +2,12 @@
   "name": "meteor-vue-guide",
   "private": true,
   "scripts": {
-    "start": "meteor run",
-    "test": "meteor test --once --driver-package meteortesting:mocha",
-    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "start": "meteor --settings=settings.json",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
+    "@cleverbeagle/seeder": "^2.0.3",
     "@progress/kendo-data-query": "^1.5.2",
     "@progress/kendo-dateinputs-vue-wrapper": "^2019.3.1023",
     "@progress/kendo-dropdowns-vue-wrapper": "^2019.3.1023",
@@ -36,7 +35,6 @@
     "mainModule": {
       "client": "client/main.js",
       "server": "server/main.js"
-    },
-    "testModule": "tests/main.js"
+    }
   }
 }

@@ -5,7 +5,7 @@
     </div>
 
     <div class="row">
-      <form id="login" @submit.prevent="register">
+      <form id="register" @submit.prevent="register">
         <div class="row">
           
             <ValidationProvider
@@ -69,7 +69,7 @@
                   id="confrimPassword"
                   type="password"
                   class="validate"
-                  v-model="confrimPassword"
+                  v-model="confirmPassword"
                 />
                 <span>{{ errors[0] }}</span>
               </div>
@@ -88,7 +88,7 @@
 
 <script>
 import Vue from 'vue'
-import { Accounts } from "meteor/accounts-base";
+import { registerAccount } from "../../api/accounts/methods.js";
 
 export default {
   data() {
@@ -96,24 +96,17 @@ export default {
       username: "",
       email: "",
       password: "",
-      confrimPassword: ""
+      confirmPassword: ""
     };
   },
   methods: {
     register(evt) {
-      Accounts.createUser(
-        { username: this.username,email: this.email, password: this.password },
-        function(err) {
-          if (err) {
-            Vue.toasted.error(err.reason);
-            
-          } else {
-            Vue.toasted.success("User Account Created");
-            this.$router.push('login')
-          }
-        }
-      );
+      Accounts.createUser( { 'username': this.username,  'email': this.email,  'password': this.password }, function(err){
+        if(err) console.log(err)
+      } );
+      //registerAccount.call( { username: this.username,  email: this.email,  password: this.password } );
     }
-  }
+
+    }
 };
 </script>

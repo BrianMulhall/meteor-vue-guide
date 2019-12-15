@@ -1,16 +1,12 @@
 // This section sets up some basic app metadata, the entire section is optional.
 App.info({
     id: 'com.susco.meteor_tutorial',
-    name: 'meteor-tutorial-ff108',
-    description: 'my MeteorJS application',
+    name: 'meteor-vue-tutorial',
+    description: 'MeteorJS application',
     author: "Brian Mulhall",
     email: "brian.e.mulhall@gmail.com",
   });
-  
-  App.configurePlugin('phonegap-plugin-push', {
-    SENDER_ID: 817724924050
-  });
-  
+    
   // Set PhoneGap/Cordova preferences.
   App.setPreference('BackgroundColor', '0xff0000ff');
   App.setPreference('HideKeyboardFormAccessoryBar', true);
