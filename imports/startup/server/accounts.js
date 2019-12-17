@@ -1,5 +1,6 @@
 import { Accounts } from 'meteor/accounts-base'
 
+console.log(Accounts.urls)
 
 Accounts.config({
   sendVerificationEmail: true,
@@ -14,6 +15,11 @@ Accounts.urls.resetPassword = function reset(token) {
 // verify email
 Accounts.urls.verifyEmail = function verify(token) {
   return Meteor.absoluteUrl( `verifyEmail/${token}` );
+};
+
+// enroll email
+Accounts.urls.enrollAccount = function enroll(token) {
+  return Meteor.absoluteUrl( `enrollAccount/${token}` );
 };
 
   
