@@ -4,28 +4,23 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Accounts } from 'meteor/accounts-base'
 
 
-export const registerAccount = new ValidatedMethod({
+export const createUser = new ValidatedMethod({
   
-  name: 'accounts.Registration',
+  name: 'accounts.CreateUser',
   
   validate: new SimpleSchema({
-        username: {type: String },
-        email: { type: String },
-        password: { type: String }
+        username: { type: String },
+        email:    { type: String }
     }).validator(),
 
-  run({ username, email, password }){
-    
-    //const userId = Accounts.createUser( { username: username, email: email, password: password });
+  run({ username, email }){
+    try {
+      
+      const userId = Accounts.createUser( { 'username': username, 'email': email });
+      Accounts.sendEnrollmentEmail( userId, email )
 
-    try{ 
-
-      const id = Accounts.createUser( { username,
-                                        email,
-                                        password });
-      console.log(id)
-    } catch(err){
-      console.log(err);
+    } catch(err) {
+      throw new Meteor.Error(err);
     }
     
     

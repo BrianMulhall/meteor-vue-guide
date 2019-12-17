@@ -11,6 +11,10 @@
         </a>
         <ul v-if="this.isLoggedIn" class="right hide-on-med-and-down">
           
+            <router-link tag="li" class="col" :to="{ name: 'createUser' }">
+              <a>Create User</a>
+            </router-link>
+
             <router-link tag="li" class="col" :to="{ name: 'books' }">
               <a>Books</a>
             </router-link>

@@ -1,15 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { Meteor } from 'meteor/meteor'
-import store  from './store'
-import { Home } from '../../ui/components/Home.vue'
+
 Vue.use(VueRouter);
 
 const routes = [
   { 
     path: "/",
     name: "home",
-    component: Home
+    component: () => import(/* webpackChunkName: "home" */ '../../ui/components/Home.vue')
   },
   { 
     path: "/books", 
@@ -35,6 +33,11 @@ const routes = [
     path: "/forgotPassword", 
     name: "forgotPassword", 
     component: () => import(/* webpackChunkName: "forgotPassword" */ '../../ui/components/ForgotPassword.vue')
+  },
+  { 
+    path: "/createUser", 
+    name: "createUser", 
+    component: () => import(/* webpackChunkName: "createUser" */ '../../ui/components/CreateUser.vue')
   },
   { 
     path: "/login", 
