@@ -8,6 +8,7 @@
       <form id="login" class="col s12" @submit.prevent="login">
         <div class="row">
           <div class="input-field col s12">
+             <i class="material-icons prefix">account_circle</i>
             <input
               id="username"
               type="text"
@@ -20,6 +21,7 @@
 
         <div class="row">
           <div class="input-field col s12">
+          <i class="material-icons prefix">lock</i>
             <input
               id="password"
               type="password"
@@ -30,7 +32,7 @@
           </div>
         </div>
 
-        <button class="btn waves-effect waves-light" type="submit" > Login </button>
+        <button class="btn waves-effect cyan pulse" type="submit" > Login </button>
 
         <button class="btn waves-effect waves-light" @click.prevent="register" > Register </button>
 
