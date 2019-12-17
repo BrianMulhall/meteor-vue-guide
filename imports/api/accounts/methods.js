@@ -4,25 +4,35 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Accounts } from 'meteor/accounts-base'
 
 
-export const createUser = new ValidatedMethod({
+// export const createUser = new ValidatedMethod({
   
-  name: 'accounts.CreateUser',
+//   name: 'accounts.CreateUser',
   
-  validate: new SimpleSchema({
-        username: { type: String },
-        email:    { type: String }
-    }).validator(),
+//   validate: new SimpleSchema({
+//         email:    { type: String }
+//     }).validator(),
 
-  run({ username, email }){
-    try {
-      
-      const userId = Accounts.createUser( { 'username': username, 'email': email });
-      Accounts.sendEnrollmentEmail( userId, email )
+//   run({ email }){
+//     try{
+//       console.log('running accounts.CreateUser ')
+//       const userId = Accounts.createUser( { 'email': email });
+//       console.log('second ')
+//       Accounts.sendEnrollmentEmail( userId, email )
+//       console.log('third ')  
+//     }catch(err){
+//       console.log(err);
+//     }
+//   }
+// });
 
-    } catch(err) {
-      throw new Meteor.Error(err);
-    }
-    
-    
+Meteor.methods({
+  'accounts.CreateUser'({ email }) {
+   
+    console.log('running accounts.CreateUser ');
+    const userId = Accounts.createUser( { 'email': email });
+    console.log('second ');
+    Accounts.sendEnrollmentEmail( userId, email );
+    console.log('third ');  
+
   }
 });

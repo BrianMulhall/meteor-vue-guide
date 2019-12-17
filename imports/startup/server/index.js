@@ -12,8 +12,14 @@ import '../../api/accounts/methods.js'
 import '../../api/users/server/publications.js'
 
 import '../../api/roleAssignment/server/publications.js'
+
 import './roles.js'
 import './accounts.js'
+
+import './email-templates.js'
+import './service-config.js'
+
+import './smtp-config.js'
 
 let adminAccount = Accounts.findUserByUsername('admin');
 

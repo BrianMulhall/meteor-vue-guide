@@ -6,6 +6,7 @@
 
     <div class="row">
       <form id="login" class="col s12" @submit.prevent="login">
+
         <div class="row">
           <div class="input-field col s12">
              <i class="material-icons prefix">account_circle</i>
@@ -45,6 +46,7 @@
 <script>
 import { Meteor } from "meteor/meteor";
 import Vue from "vue";
+
 
 export default {
   data() {

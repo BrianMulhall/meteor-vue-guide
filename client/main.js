@@ -10,6 +10,8 @@ import Toasted from 'vue-toasted';
 import VueRouter from "vue-router"; 
 import Vuex from 'vuex'
 
+import 'bootstrap-social/bootstrap-social.css';
+
 // global component registrations
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);

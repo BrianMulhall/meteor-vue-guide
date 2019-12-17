@@ -30,3 +30,7 @@ nimble:restivus
 accounts-password
 alanning:roles
 email
+service-configuration
+accounts-github
+appcache
+webapp

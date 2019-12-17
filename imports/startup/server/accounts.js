@@ -1,10 +1,9 @@
 import { Accounts } from 'meteor/accounts-base'
 
-console.log(Accounts.urls)
 
 Accounts.config({
   sendVerificationEmail: true,
-  forbidClientAccountCreation: true
+  forbidClientAccountCreation: false
 });
 
 // reset password email
