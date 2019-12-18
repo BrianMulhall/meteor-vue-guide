@@ -34,3 +34,7 @@ service-configuration
 accounts-github
 appcache
 webapp
+tprzytula:remember-me
+accounts-google
+accounts-twitter
+accounts-facebook

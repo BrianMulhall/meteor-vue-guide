@@ -6,10 +6,7 @@
     <a class="carousel-item" href="#four!"><img src="gustav.jpg"></a>
     <a class="carousel-item" href="#five!"><img src="kandinsky.jpeg"></a>
   </div>     
-  <a class="btn btn-block btn-social btn-github">
-  <span class="fa fa-github"></span>
-  Sign in with Github
-</a>
+
 </div>
 
 </template>

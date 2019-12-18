@@ -4,7 +4,8 @@
       <h1>Create Account</h1>
     </div>
 
-    <div class="row">
+       <div class="card">
+      <div class="card-content">
       <form id="createUser" @submit.prevent="createUser">
         <div class="row">
 
@@ -27,12 +28,12 @@
 
       </form>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import { createUser } from "../../api/accounts/methods.js";
 
 export default {
   data() {
@@ -47,23 +48,12 @@ export default {
           email: this.email
         }, (err, res) => {
           if (err) {
-            console.log(err);
+            this.$toasted.error(err.reason);
           } else {
-            // success!
+            this.$toasted.info('Email Address has been verified');
           }
       });
 
-
-      console.log("calling function");
-      createUser.call( { 'email': this.email },
-        function(err) {
-          if (err) {
-            this.$toasted.error(err.reason);
-          } else {
-            this.$toasted.info("Account has been created");
-          }
-        }.bind(this)
-      );
     }
   }
 };

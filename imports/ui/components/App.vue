@@ -9,26 +9,70 @@
         <a href="#" data-target="side-menu" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
-        <ul v-if="this.isLoggedIn" class="right hide-on-med-and-down">
-          
-            <router-link tag="li" class="col" :to="{ name: 'createUser' }">
-              <a>Create User</a>
-            </router-link>
+        <ul class="right hide-on-med-and-down">
 
-            <router-link tag="li" class="col" :to="{ name: 'books' }">
-              <a>Books</a>
-            </router-link>
+          <router-link
+            v-if="this.isLoggedIn"
+            tag="li"
+            class="col"
+            :to="{ name: 'createUser' }"
+          >
+            <a>Create User</a>
+          </router-link>
 
-            <router-link tag="li" class="col" :to="{ name: 'person' }">
-              <a>Person</a>
-            </router-link>
+          <router-link
+            v-if="this.isLoggedIn"
+            tag="li"
+            class="col"
+            :to="{ name: 'editUserProfile' }"
+          >
+            <a>Edit User Profile</a>
+          </router-link>
 
-            <li>
-              <a class="waves-effect waves-light btn" @click.prevent="logOff"
-                >Log Off</a
-              >
-            </li>
-          
+           <router-link
+            v-if="this.isLoggedIn"
+            tag="li"
+            class="col"
+            :to="{ name: 'createUser' }"
+          >
+            <a>Create User</a>
+          </router-link>
+
+          <router-link
+            v-if="this.isLoggedIn"
+            tag="li"
+            class="col"
+            :to="{ name: 'books' }"
+          >
+            <a>Books</a>
+          </router-link>
+
+          <router-link
+            v-if="this.isLoggedIn"
+            tag="li"
+            class="col"
+            :to="{ name: 'person' }"
+          >
+            <a>Person</a>
+          </router-link>
+
+          <li v-if="this.isLoggedOut">
+            <router-link :to="{ name: 'forgotPassword' }">
+              Forgot Password?
+            </router-link>
+          </li>
+
+          <li v-if="this.isLoggedOut">
+            <router-link :to="{ name: 'register' }"
+              ><i class="material-icons">person_add</i></router-link
+            >
+          </li>
+
+          <li v-if="this.isLoggedIn">
+            <a class="waves-effect waves-light btn" @click.prevent="logOff"
+              >Log Off</a
+            >
+          </li>
         </ul>
       </div>
     </nav>
@@ -56,6 +100,7 @@
   </div>
 </template>
 
+
 <script>
 import { Meteor } from "meteor/meteor";
 import Vue from "vue";
@@ -63,29 +108,32 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      userId: Meteor.userId(),
+      userId: Meteor.userId()
     };
   },
   methods: {
     logOff: function(event) {
-      Meteor.logout(function(err){
-        if(err) console.log(err);
+      Meteor.logout(function(err) {
+        if (err) console.log(err);
       });
-      this.$store.commit('toggleLoggedInStatus',false);
-      this.$router.push({ path: '/login' })
+      this.$store.commit("toggleLoggedInStatus", false);
+      this.$router.push({ path: "/login" });
     }
   },
   computed: {
     isLoggedIn: function() {
-      return this.$store.getters.getLoggedInStatus
+      return this.$store.getters.getLoggedInStatus;
+    },
+    isLoggedOut: function() {
+      return !this.$store.getters.getLoggedInStatus;
     }
   },
-
   mounted() {
     M.AutoInit();
   }
 };
 </script>
+
 
 <style>
 .fade-enter-active,

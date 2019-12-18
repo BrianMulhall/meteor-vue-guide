@@ -4,7 +4,8 @@
       <h1>Register</h1>
     </div>
 
-    <div class="row">
+        <div class="card">
+      <div class="card-content">
       <form id="register" @submit.prevent="register">
         <div class="row">
           
@@ -83,6 +84,7 @@
         </button>
       </form>
     </div>
+    </div>
   </div>
 </template>
 
@@ -109,7 +111,6 @@ export default {
                     this.$router.push({ path: '/login' })
                   }
             }).bind(this));
-      //registerAccount.call( { username: this.username,  email: this.email,  password: this.password } );
     }
 
     }

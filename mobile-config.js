@@ -1,7 +1,7 @@
 // This section sets up some basic app metadata, the entire section is optional.
 App.info({
-    id: 'com.susco.meteor_tutorial',
-    name: 'meteor-vue-tutorial',
+    id: 'com.susco.meteor',
+    name: 'meteor-vue',
     description: 'MeteorJS application',
     author: "Brian Mulhall",
     email: "brian.e.mulhall@gmail.com",

@@ -50,6 +50,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "verifyEmail" */ '../../ui/components/VerifyEmail.vue')
   },
   {
+    path: "/editUserProfile", 
+    name: "editUserProfile", 
+    component: () => import(/* webpackChunkName: "editUserProfile" */ '../../ui/components/EditUserProfile.vue')
+  },
+  {
     path: "/enrollAccount/:token", 
     name: "enrollAccount", 
     component: () => import(/* webpackChunkName: "enrollAccount" */ '../../ui/components/EnrollAccount.vue')

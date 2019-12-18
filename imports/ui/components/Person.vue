@@ -3,7 +3,8 @@
     <div class="page-header">
       <h1>Creating a Person</h1>
     </div>
-    <div class="row">
+       <div class="card">
+      <div class="card-content">
       <div class="col s12">
         <form @submit.prevent="createPerson()">
           <div class="input-field col s12">
@@ -59,6 +60,7 @@
             <i class="material-icons right">send</i>
           </button>
         </form>
+        </div>
       </div>
     </div>
     <div style="margin-top:60px" class="row">
@@ -101,8 +103,10 @@ export default {
     },
   },
   meteor: {
+    $lazy: true,
     // Subscriptions
     $subscribe: {
+      // this is subscription with no parameters
       persons: []
     },
     persons() {

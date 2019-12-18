@@ -4,7 +4,8 @@
       <h1>Enroll Account</h1>
     </div>
 
-    <div class="row">
+           <div class="card">
+      <div class="card-content">
       <form id="enrollAccount" @submit.prevent="enrollAccount">
         <ValidationObserver>
           <div class="row">
@@ -51,6 +52,7 @@
           <i class="material-icons right">send</i>
         </button>
       </form>
+      </div>
     </div>
   </div>
 </template>
