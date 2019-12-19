@@ -26,7 +26,8 @@
           <i class="material-icons right">send</i>
         </button>
 
-      </form>
+      </fo
+      rm>
     </div>
     </div>
   </div>

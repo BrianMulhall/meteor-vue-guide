@@ -95,6 +95,7 @@ export default {
   },
   methods: {
     login(evt) {     
+        Meteor.logoutOtherClients((err) => console.log(err));
         Meteor.loginWithPassword( this.username, this.password, 
            (function (err) {
                   if (err) {
