@@ -22,8 +22,9 @@ Accounts.urls.enrollAccount = function enroll(token) {
 };
 
   
+
 Accounts.onLogout(function(attempt){console.log('logging out',attempt, Meteor.userId()) });
 
 Accounts.onLogin(function(attempt){console.log('logging in',attempt, Meteor.userId()) });
 
-Accounts.onLoginFailure(function(attempt){console.log('log in failed', attempt) })
+Accounts.onLoginFailure(function(attempt){console.log('log in failed') })

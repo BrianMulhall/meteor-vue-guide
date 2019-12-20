@@ -1,3 +1,4 @@
+// Vue
 import Vue from 'vue'
 import VueMeteorTracker from 'vue-meteor-tracker'
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
@@ -5,7 +6,8 @@ import { ValidationObserver } from 'vee-validate'
 import Toasted from 'vue-toasted';
 import VueRouter from "vue-router"; 
 import Vuex from 'vuex'
-
+import VModal from 'vue-js-modal'
+// my application
 import App from '../imports/ui/components/App.vue'
 import router from '../imports/startup/client/router'
 import store  from '../imports/startup/client/store'
@@ -21,6 +23,8 @@ Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
 // plugins
+Vue.use(Vuex)
+Vue.use(VModal)
 Vue.use(VueRouter);
 Vue.use(VueMeteorTracker)
 Vue.use(Toasted,{
@@ -28,7 +32,7 @@ Vue.use(Toasted,{
   position : 'top-center',
   theme: 'bubble'
 })
-Vue.use(Vuex)
+
 
 Vue.config.productionTip = false
 

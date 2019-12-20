@@ -33,11 +33,6 @@
           </div>
         </div>
 
-<!--         
-   <button class="btn waves-effect waves-light" @click.prevent="register" > Register </button>
-         -->
-
-        <!-- <button class="btn waves-effect waves-light" @click.prevent="resetPassword" > Reset Password </button> -->
 
         <button class="btn waves-effect pulse" type="submit" > Login </button>
       </form>
@@ -75,7 +70,7 @@ export default {
     // Subscriptions
     $subscribe: {
       // We subscribe to the 'threads' publication
-      'threads': []
+     // 'threads': []
     },
     // Threads list
     // You can access tthe result with the 'threads' property on the Vue instance
@@ -103,6 +98,7 @@ export default {
                   } else {
                     this.$store.commit('toggleLoggedInStatus',true);
                     this.$router.push({ path: '/' })
+                    Console.log('logged in', Meteor.userId())
                   }
             }).bind(this))
     },
@@ -116,6 +112,7 @@ export default {
             this.$store.commit('toggleLoggedInStatus',true);
             this.$toasted.info('Github account has been used to log in');
             this.$router.push({ path: "/" });
+            Console.log('logged in', Meteor.userId())
           }
         });
     },
@@ -130,6 +127,7 @@ export default {
             this.$store.commit('toggleLoggedInStatus',true);
             this.$toasted.info('Facebook account has been used to log in');
             this.$router.push({ path: "/" });
+            Console.log('logged in', Meteor.userId())
           }
       });
     }

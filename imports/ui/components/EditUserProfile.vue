@@ -9,8 +9,74 @@
 
       <div class="card-content">
         
+          <div class="row">
+            <ValidationProvider v-slot="{ errors }" name="username" rules="required" >
+              <div @click.prevent="updateUsername" class="input-field col s12">
+                <label class="active" for="username">Username</label>
+                <input
+                  id="username"
+                  type="text"
+                  class="validate"
+                  v-model="username"
+                />
+                <span>{{ errors[0] }}</span>
+              </div>
+            </ValidationProvider>
+
+         
+              </div>
+
+
+
+         <ValidationObserver>
+          <div class="row">
+            <ValidationProvider
+              v-slot="{ errors }"
+              name="Password"
+              vid="password"
+            >
+              <div class="input-field col s6">
+                <label class="active" for="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  class="validate"
+                  v-model="password"
+                />
+                <span>{{ errors[0] }}</span>
+              </div>
+            </ValidationProvider>
+          </div>
+
+          <div class="row">
+            <ValidationProvider
+              rules="confirmed:password"
+              name="Confirm Password"
+              v-slot="{ errors }"
+            >
+              <div class="input-field col s12">
+                <label class="active" for="confrimPassword">Confirm New Password</label>
+                <input
+                  id="confrimPassword"
+                  type="password"
+                  class="validate"
+                  v-model="confirmPassword"
+                />
+                <span>{{ errors[0] }}</span>
+              </div>
+            </ValidationProvider>
+          </div>
+        </ValidationObserver>
+        <button class="btn waves-effect waves-light" type="submit">
+            Update Password
+            <i class="material-icons right">send</i>
+          </button>
+
+
+
+
         <form id="editUserProfile" @submit.prevent="editUserProfile" >
-          
+
           <div class="row">
             <ValidationProvider v-slot="{ errors }" name="address" rules="required" >
               <div class="input-field col s12">
@@ -25,6 +91,7 @@
               </div>
             </ValidationProvider>
               </div>
+
               <div class="row">
             <ValidationProvider v-slot="{ errors }" name="city" vid="city" rules="required" >
               <div class="input-field col s4">
@@ -85,12 +152,19 @@
 
 </template>
 
+<modal name="hello-world">
+  hello, world!
+</modal>
+
 <script>
 import Vue from "vue";
 
 export default {
   data() {
     return {
+      username: Meteor.user().username,
+      emails: Meteor.user().emails,
+      password: "",
       address: "",
       city: "",
       state: "",
@@ -101,20 +175,12 @@ export default {
       var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {} );
   },
+  meteor: {
+  },
   methods: {
-    editUserProfile(evt) {
-      Accounts.resetPassword(
-        this.token,
-        this.password,
-        function(err) {
-          if (err) {
-            this.$toasted.error(err.reason);
-          } else {
-            this.$toasted.info("Password has been reset");
-            this.$router.push({ path: "/login" });
-          }
-        }.bind(this)
-      );
+    updateUsername(evt) {
+      debugger;
+      this.$modal.show('hello-world');
     }
   }
 };
