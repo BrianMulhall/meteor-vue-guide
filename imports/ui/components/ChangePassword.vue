@@ -63,8 +63,6 @@ export default {
           if (err) {
             this.$toasted.error(err.reason);
           } else {
-            this.newPassword = "";
-            this.confirmPassword = "";
             this.$toasted.info('Password update successfully');
           }
       });

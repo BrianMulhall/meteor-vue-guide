@@ -28,15 +28,19 @@
                 <a>Create User</a>
               </router-link>
 
-              <router-link tag="li" class="col" :to="{ name: 'books' }" >
-                <a>Books</a>
+              <router-link tag="li" class="col" :to="{ name: 'users' }" >
+                <a>Users</a>
               </router-link>
 
               <router-link tag="li" class="col" :to="{ name: 'person' }">
                 <a>Person</a>
               </router-link>
               <li><a class="dropdown-trigger" href="#!" data-target="userProfileDropdown">User Profile<i class="material-icons right">arrow_drop_down</i></a></li>
-  
+              <li>
+                <router-link :to="{ name: 'about' }">
+                <i class="material-icons">info</i>
+                </router-link>
+              </li>
               <li>
                 <a class="waves-effect waves-light btn" @click.prevent="logOff"> Log Off </a>
               </li>

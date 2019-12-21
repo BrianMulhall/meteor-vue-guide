@@ -10,7 +10,6 @@ import '../../api/items/server/publications.js'
 import '../../api/accounts/methods.js'
 
 import '../../api/users/server/publications.js'
-
 import '../../api/roleAssignment/server/publications.js'
 
 import './roles.js'
@@ -21,14 +20,6 @@ import './service-config.js'
 
 import './smtp-config.js'
 
-let adminAccount = Accounts.findUserByUsername('admin');
+import './fixtures.js'
 
-if(!adminAccount){
-    const id = Accounts.createUser({
-        username: 'admin',
-        email: 'brian.mulhall@susco.net',
-        password: 'password123',
-    });
 
-    Roles.addUsersToRoles(id, 'admin', null);
-}

@@ -31,7 +31,7 @@
         <div class="row">
           <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
           <div class="input-field col s12">
-            <label class="active" for="username">Email</label>
+            <label class="active" for="email">Email</label>
             <input id="email" type="email" class="validate" v-model="email" />
              <span>{{ errors[0] }}</span>
           </div>

@@ -74,7 +74,7 @@ export default {
                     this.$toasted.error(err.reason);
                   } else {
                     this.$toasted.info('Password has been reset');
-                    this.$router.push({ path: '/login' })
+                    this.$router.push({ path: '/' })
                   }
             }).bind(this)) 
     }

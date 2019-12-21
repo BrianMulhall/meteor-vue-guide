@@ -9,18 +9,23 @@
       <div class="card-content"> 
           <div>
               <ul>
-                  <li v-for="item in emails">
+                  <li @click.prevent="deleteEmail" v-for="item in emails">
                        {{ item.address  }} {{item.verified}}
                   </li>
-
               </ul>
-
-
           </div>
-
+        <div class="row">
+          <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
+            <div class="input-field col s12">
+                <label class="active" for="email">Email</label>
+                <input id="email" type="email" class="validate" v-model="newEmail" />
+                <span>{{ errors[0] }}</span>
+            </div>
+           </ValidationProvider>
+        </div>
           
-        <button @click.prevent="updateUsername" class="btn waves-effect waves-light" type="button">
-            Update Username
+        <button @click.prevent="addEmail" class="btn waves-effect waves-light" type="button">
+            Add New Email
             <i class="material-icons right">send</i>
           </button>
       </div>
@@ -37,7 +42,8 @@ import { Meteor } from 'meteor/meteor';
 export default {
   data() {
     return {
-      emails: []
+      emails: [],
+      newEmail: ""
     };
   },
    mounted() {
@@ -49,7 +55,7 @@ export default {
     
   },
   methods: {
-    updateUsername(evt) {
+    deleteEmail(evt) {
 
         Meteor.call('accounts.ChangeUsername', {
           userId: Meteor.userId(), newUsername: this.newUsername

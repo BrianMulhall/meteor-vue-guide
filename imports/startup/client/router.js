@@ -11,9 +11,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '../../ui/components/Home.vue')
   },
   { 
-    path: "/books", 
-    name: "books", 
-    component: () => import(/* webpackChunkName: "books" */ '../../ui/components/Books.vue')
+    path: "/about",
+    name: "about",
+    component: () => import(/* webpackChunkName: "about" */ '../../ui/components/About.vue')
+  },
+  { 
+    path: "/users", 
+    name: "users", 
+    component: () => import(/* webpackChunkName: "users" */ '../../ui/components/Users.vue')
   },
   { 
     path: "/person", 
@@ -102,7 +107,10 @@ const router = new VueRouter({
 router.beforeEach(function (to, from, next) {
   if ((to.path !== '/login' && to.path !== 'login' &&
        to.path !== '/register' && to.path !== 'register' &&
-        to.path !== '/forgotPassword' && to.path !== 'forgotPassword') && !Meteor.userId()) {
+       to.path !== '/forgotPassword' && to.path !== 'forgotPassword' &&
+       !to.path.startsWith('/restPassword') && !to.path.startsWith('restPassword') &&
+        !to.path.startsWith('/verifyEmail') && !to.path.startsWith('verifyEmail') &&
+         !to.path.startsWith('/enrollAccount') && !to.path.startsWith('enrollAccount')) && !Meteor.userId()) {
         next({ path: '/login' })
   } else if ((to.path === '/login' || to.path === 'login') && Meteor.userId()) {
     next({ path: '/' })

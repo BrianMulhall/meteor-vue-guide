@@ -28,9 +28,9 @@ Vue.use(VModal)
 Vue.use(VueRouter);
 Vue.use(VueMeteorTracker)
 Vue.use(Toasted,{
-  duration : 3000,
-  position : 'top-center',
-  theme: 'bubble'
+  duration : 2000,
+  position : 'top-right',
+  theme: 'outline'
 })
 
 
