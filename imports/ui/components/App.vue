@@ -11,8 +11,8 @@
         </a>
         <ul class="right hide-on-med-and-down">
           <template v-if='this.isLoggedIn'>
-              <router-link tag="li" class="col" :to="{ name: 'editUserProfile' }">
-                <a>Edit User Profile</a>
+              <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
+                <a>Change Username</a>
               </router-link>
 
               <router-link tag="li" class="col" :to="{ name: 'createUser' }">
@@ -43,12 +43,6 @@
         </ul>
       </div>
     </nav>
-
-  <pre>
-    {{this.userId}}
-
-    {{this.isLoggedIn}}
-  </pre>
 
     <ul class="sidenav" id="side-menu">
       <router-link tag="li" class="col" :to="{ name: 'register' }">
