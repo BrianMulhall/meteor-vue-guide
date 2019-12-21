@@ -11,11 +11,12 @@ import VModal from 'vue-js-modal'
 import App from '../imports/ui/components/App.vue'
 import router from '../imports/startup/client/router'
 import store  from '../imports/startup/client/store'
-
 import '../imports/startup/client/global-subscriptions.js'
-
 // CSS
 import 'bootstrap-social/bootstrap-social.css';
+// kendo
+import '@progress/kendo-ui'
+import '@progress/kendo-theme-default/dist/all.css'
 
 // global component registrations
 Vue.component('ValidationProvider', ValidationProvider);

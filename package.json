@@ -8,6 +8,9 @@
   "dependencies": {
     "@babel/runtime": "^7.3.4",
     "@cleverbeagle/seeder": "^2.0.3",
+    "@progress/kendo-dateinputs-vue-wrapper": "^2019.3.1023",
+    "@progress/kendo-theme-default": "^4.10.0",
+    "@progress/kendo-ui": "^2019.3.1113",
     "bcrypt": "^3.0.7",
     "bootstrap-social": "^5.1.1",
     "meteor-node-stubs": "^0.4.1",

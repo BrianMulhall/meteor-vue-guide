@@ -7,20 +7,18 @@
 
     <div class="card">
       <div class="card-content"> 
-        <div class="row">
-              <div  class="input-field col s12">
-                <label class="active" for="username">Username</label>
-                <input type="text" readonly class="validate" v-model="username" />
-              </div>
+          <div>
+              <ul>
+                  <li v-for="item in emails">
+                       {{ item.address  }} {{item.verified}}
+                  </li>
+
+              </ul>
+
+
           </div>
 
-          <div class="row">
-              <div  class="input-field col s12">
-                <label class="active" for="username">New Username</label>
-                <input type="text" class="validate" v-model="newUsername"/>
-              </div>
-            </div>
-
+          
         <button @click.prevent="updateUsername" class="btn waves-effect waves-light" type="button">
             Update Username
             <i class="material-icons right">send</i>
@@ -39,14 +37,13 @@ import { Meteor } from 'meteor/meteor';
 export default {
   data() {
     return {
-      username: "",
-      newUsername: ""
+      emails: []
     };
   },
    mounted() {
     this.$autorun(() => { 
       if(Meteor.user()){
-        this.username =  Meteor.user().username
+        this.emails =  Meteor.user().emails
       }
     });
     
