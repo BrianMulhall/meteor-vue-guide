@@ -3,7 +3,13 @@ import { Accounts } from 'meteor/accounts-base'
 
 Accounts.config({
   sendVerificationEmail: true,
-  forbidClientAccountCreation: false
+  forbidClientAccountCreation: false,
+  loginExpirationInDays: 3, // days (default is 90)
+  //oauthSecretKey: 
+  //restrictCreationByEmailDomain
+  passwordResetTokenExpirationInDays: 3, // days (default is 3)
+  passwordEnrollTokenExpirationInDays: 30, // days (default is 30)
+  ambiguousErrorMessages: true
 });
 
 // reset password email

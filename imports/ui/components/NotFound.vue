@@ -9,11 +9,7 @@
           Check your spelling or click below to return to the homepage.
         </p>
         <div class="actions center-align ">
-          <router-link
-            class="btn waves-effect waves-light"
-            tag="button"
-            v-bind:to="{ name: 'home' }"
-          >
+          <router-link class="btn waves-effect waves-light" tag="button" v-bind:to="{ name: 'home' }">
             Return to Home
           </router-link>
         </div>

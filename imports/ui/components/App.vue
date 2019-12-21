@@ -10,72 +10,45 @@
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">
+          <template v-if='this.isLoggedIn'>
+              <router-link tag="li" class="col" :to="{ name: 'editUserProfile' }">
+                <a>Edit User Profile</a>
+              </router-link>
 
-          <router-link
-            v-if="this.isLoggedIn"
-            tag="li"
-            class="col"
-            :to="{ name: 'createUser' }"
-          >
-            <a>Create User</a>
-          </router-link>
+              <router-link tag="li" class="col" :to="{ name: 'createUser' }">
+                <a>Create User</a>
+              </router-link>
 
-          <router-link
-            v-if="this.isLoggedIn"
-            tag="li"
-            class="col"
-            :to="{ name: 'editUserProfile' }"
-          >
-            <a>Edit User Profile</a>
-          </router-link>
+              <router-link tag="li" class="col" :to="{ name: 'books' }" >
+                <a>Books</a>
+              </router-link>
 
-           <router-link
-            v-if="this.isLoggedIn"
-            tag="li"
-            class="col"
-            :to="{ name: 'createUser' }"
-          >
-            <a>Create User</a>
-          </router-link>
+              <router-link tag="li" class="col" :to="{ name: 'person' }">
+                <a>Person</a>
+              </router-link>
+              <li>
+                <a class="waves-effect waves-light btn" @click.prevent="logOff"> Log Off </a>
+              </li>
+          </template>
 
-          <router-link
-            v-if="this.isLoggedIn"
-            tag="li"
-            class="col"
-            :to="{ name: 'books' }"
-          >
-            <a>Books</a>
-          </router-link>
+          <template v-else>
+            <li >
+              <router-link :to="{ name: 'forgotPassword' }">Forgot Password?</router-link>
+            </li>
+            <li>
+              <router-link :to="{ name: 'register' }"><i class="material-icons">person_add</i></router-link>
+            </li>
+          </template>
 
-          <router-link
-            v-if="this.isLoggedIn"
-            tag="li"
-            class="col"
-            :to="{ name: 'person' }"
-          >
-            <a>Person</a>
-          </router-link>
-
-          <li v-if="this.isLoggedOut">
-            <router-link :to="{ name: 'forgotPassword' }">
-              Forgot Password?
-            </router-link>
-          </li>
-
-          <li v-if="this.isLoggedOut">
-            <router-link :to="{ name: 'register' }"
-              ><i class="material-icons">person_add</i></router-link
-            >
-          </li>
-
-          <li v-if="this.isLoggedIn">
-            <a class="waves-effect waves-light btn" @click.prevent="logOff"
-              >Log Off</a
-            >
-          </li>
         </ul>
       </div>
     </nav>
+
+  <pre>
+    {{this.userId}}
+
+    {{this.isLoggedIn}}
+  </pre>
 
     <ul class="sidenav" id="side-menu">
       <router-link tag="li" class="col" :to="{ name: 'register' }">
@@ -108,27 +81,28 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      userId: Meteor.userId()
+      userId: "",
+      isLoggedIn: false
     };
   },
   methods: {
     logOff: function(event) {
-      Meteor.logout(function(err) {
-        if (err) console.log(err);
-      });
-      this.$store.commit("toggleLoggedInStatus", false);
-      this.$router.push({ path: "/login" });
+      Meteor.logout((function (err) {
+                  if (err) {
+                    this.$toasted.error(err.reason);
+                  } else {
+                    this.$toasted.info('You are now logged out');
+                    this.$router.push({ path: '/login' })
+                  }
+            }).bind(this));
+     
     }
   },
   computed: {
-    isLoggedIn: function() {
-      return this.$store.getters.getLoggedInStatus;
-    },
-    isLoggedOut: function() {
-      return !this.$store.getters.getLoggedInStatus;
-    }
   },
   mounted() {
+    this.$autorun(() => this.isLoggedIn = (Meteor.userId() != null));
+    this.$autorun(() => this.userId = Meteor.userId() );
     M.AutoInit();
   }
 };
