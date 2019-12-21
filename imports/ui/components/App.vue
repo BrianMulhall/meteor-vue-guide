@@ -9,11 +9,20 @@
         <a href="#" data-target="side-menu" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
-        <ul class="right hide-on-med-and-down">
-          <template v-if='this.isLoggedIn'>
-              <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
+        <!-- Dropdown Structure -->
+        <ul id="userProfileDropdown" class="dropdown-content">
+           <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
                 <a>Change Username</a>
               </router-link>
+           <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
+                <a>Change Password</a>
+              </router-link>
+           <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
+                <a>Add/Remove Emails</a>
+              </router-link>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+          <template v-if='this.isLoggedIn'>
 
               <router-link tag="li" class="col" :to="{ name: 'createUser' }">
                 <a>Create User</a>
@@ -26,6 +35,8 @@
               <router-link tag="li" class="col" :to="{ name: 'person' }">
                 <a>Person</a>
               </router-link>
+              <li><a class="dropdown-trigger" href="#!" data-target="userProfileDropdown">User Profile<i class="material-icons right">arrow_drop_down</i></a></li>
+  
               <li>
                 <a class="waves-effect waves-light btn" @click.prevent="logOff"> Log Off </a>
               </li>
@@ -45,21 +56,26 @@
     </nav>
 
     <ul class="sidenav" id="side-menu">
-      <router-link tag="li" class="col" :to="{ name: 'register' }">
-        <a>Register</a>
-      </router-link>
+       <template v-if='this.isLoggedIn'>
+                   <router-link tag="li" class="col" :to="{ name: 'books' }">
+            <a>Books</a>
+          </router-link>
 
-      <router-link tag="li" class="col" :to="{ name: 'login' }">
-        <a>Login</a>
-      </router-link>
+          <router-link tag="li" class="col" :to="{ name: 'person' }">
+            <a>Person</a>
+          </router-link>
+       </template>
+       <template v-else >
 
-      <router-link tag="li" class="col" :to="{ name: 'books' }">
-        <a>Books</a>
-      </router-link>
 
-      <router-link tag="li" class="col" :to="{ name: 'person' }">
-        <a>Person</a>
-      </router-link>
+                    <router-link tag="li" class="col" :to="{ name: 'register' }">
+            <a>Register</a>
+          </router-link>
+
+          <router-link tag="li" class="col" :to="{ name: 'login' }">
+            <a>Login</a>
+          </router-link>
+      </template>
     </ul>
     <transition name="fade" mode="out-in">
       <router-view />
@@ -79,13 +95,17 @@ export default {
       isLoggedIn: false
     };
   },
+  mounted() {
+    console.log('mounted starting');
+    $(".dropdown-trigger").dropdown();
+    console.log('mounted done');
+  },
   methods: {
     logOff: function(event) {
       Meteor.logout((function (err) {
                   if (err) {
                     this.$toasted.error(err.reason);
                   } else {
-                    this.$toasted.info('You are now logged out');
                     this.$router.push({ path: '/login' })
                   }
             }).bind(this));

@@ -1,38 +1,26 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { ValidatedMethod } from 'meteor/mdg:validated-method';
+import { check } from 'meteor/check'
 import { Accounts } from 'meteor/accounts-base'
 
 
-// export const createUser = new ValidatedMethod({
-  
-//   name: 'accounts.CreateUser',
-  
-//   validate: new SimpleSchema({
-//         email:    { type: String }
-//     }).validator(),
-
-//   run({ email }){
-//     try{
-//       console.log('running accounts.CreateUser ')
-//       const userId = Accounts.createUser( { 'email': email });
-//       console.log('second ')
-//       Accounts.sendEnrollmentEmail( userId, email )
-//       console.log('third ')  
-//     }catch(err){
-//       console.log(err);
-//     }
-//   }
-// });
-
 Meteor.methods({
   'accounts.CreateUser'({ email }) {
-   
-    console.log('running accounts.CreateUser ');
+    check(email,String);
     const userId = Accounts.createUser( { 'email': email });
-    console.log('second ');
     Accounts.sendEnrollmentEmail( userId, email );
-    console.log('third ');  
+  },
+  'accounts.ChangeUsername'({ userId, newUsername }) {
+    check(userId,String);
+    check(newUsername, String);
 
+    Accounts.setUsername(userId, newUsername);
+
+  },
+  'accounts.ChangePassword'({ userId, newPassword }) {
+    check(userId,String);
+    check(newPassword, String);
+
+    Accounts.setPassword(userId, newPassword, {logout: false});
   }
 });

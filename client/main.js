@@ -12,7 +12,6 @@ import App from '../imports/ui/components/App.vue'
 import router from '../imports/startup/client/router'
 import store  from '../imports/startup/client/store'
 
-import '../imports/startup/client/accounts.js'
 import '../imports/startup/client/global-subscriptions.js'
 
 // CSS

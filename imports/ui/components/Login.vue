@@ -3,7 +3,7 @@
         <div class="page-header">
       <h1>Login</h1>
     </div>
-    <div class="card">
+    <div class="z-depth-4 card">
         <div class="card-content">
       <form id="login" class="col s12" @submit.prevent="login">
 
@@ -34,11 +34,11 @@
         </div>
 
 
-        <button class="btn waves-effect pulse" type="submit" > Login </button>
+        <button class="btn waves-effect" type="submit" > Login </button>
       </form>
       </div>
     </div>
-    <div class="card">
+    <div class="z-depth-4 card">
         <div class="card-content">
           <a @click.prevent="loginGithub" class="btn btn-block btn-social btn-github"><span class="fa fa-github"></span>Sign in with Github</a>
 

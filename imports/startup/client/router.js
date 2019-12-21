@@ -61,6 +61,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "changeUsername" */ '../../ui/components/ChangeUsername.vue')
   },
   {
+    path: "/changePassword", 
+    name: "changePassword", 
+    component: () => import(/* webpackChunkName: "changePassword" */ '../../ui/components/ChangePassword.vue')
+  },
+  {
+    path: "/addRemoveEmails", 
+    name: "addRemoveEmails", 
+    component: () => import(/* webpackChunkName: "addRemoveEmails" */ '../../ui/components/AddRemoveEmails.vue')
+  },
+  {
     path: "/enrollAccount/:token", 
     name: "enrollAccount", 
     component: () => import(/* webpackChunkName: "enrollAccount" */ '../../ui/components/EnrollAccount.vue')

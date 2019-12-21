@@ -152,9 +152,6 @@
 
 </template>
 
-<modal name="hello-world">
-  hello, world!
-</modal>
 
 <script>
 import Vue from "vue";

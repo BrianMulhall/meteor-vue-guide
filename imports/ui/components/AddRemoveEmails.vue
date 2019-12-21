@@ -2,28 +2,22 @@
   <div class="container">
 
     <div class="page-header">
-      <h1>User Profile</h1>
+      <h1>Add/Remove Emails</h1>
     </div>
 
     <div class="card">
-
-      <div class="card-content">
-        
+      <div class="card-content"> 
         <div class="row">
               <div  class="input-field col s12">
                 <label class="active" for="username">Username</label>
                 <input type="text" readonly class="validate" v-model="username" />
               </div>
-           
-
-         
-              </div>
+          </div>
 
           <div class="row">
               <div  class="input-field col s12">
-                <label class="active" for="username">Username</label>
+                <label class="active" for="username">New Username</label>
                 <input type="text" class="validate" v-model="newUsername"/>
-                <span>{{ errors[0] }}</span>
               </div>
             </div>
 
@@ -32,32 +26,45 @@
             <i class="material-icons right">send</i>
           </button>
       </div>
-    
     </div>
-
   </div>
-
 </template>
 
 
 
 <script>
 import Vue from "vue";
+import { Meteor } from 'meteor/meteor';
+
 export default {
   data() {
     return {
-      username: Meteor.user().username,
+      username: "",
       newUsername: ""
     };
   },
-  mounted: function(){
-      
-  },
-  meteor: {
+   mounted() {
+    this.$autorun(() => { 
+      if(Meteor.user()){
+        this.username =  Meteor.user().username
+      }
+    });
+    
   },
   methods: {
     updateUsername(evt) {
-        Accounts.setUsername(Meteor.userId(), this.newUsername);
+
+        Meteor.call('accounts.ChangeUsername', {
+          userId: Meteor.userId(), newUsername: this.newUsername
+        }, (err, res) => {
+          if (err) {
+            this.$toasted.error(err.reason);
+          } else {
+            this.newUsername = "";
+            this.$toasted.info('Username update successfully');
+          }
+      });
+        
     }
   }
 };
