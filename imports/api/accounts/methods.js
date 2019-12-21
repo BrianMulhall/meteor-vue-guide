@@ -22,5 +22,28 @@ Meteor.methods({
     check(newPassword, String);
 
     Accounts.setPassword(userId, newPassword, {logout: false});
+  },
+  'accounts.AddEmail'({ userId, newEmail }) {
+    check(userId,String);
+    check(newEmail, String);
+    try{
+    Accounts.addEmail(userId, newEmail, false);
+    Accounts.sendVerificationEmail(userId, newEmail);
+    }catch(err){
+      throw new Meteor.Error(err);
+    }
+  },
+  'accounts.DeleteEmail'({ userId, email }) {
+    check(userId,String);
+    check(email, String);
+    
+    console.log('my email is',email)
+    try{
+      Accounts.removeEmail(userId, email)
+    }
+    catch(err){
+      throw new Meteor.Error(err);
+    }
+    
   }
 });

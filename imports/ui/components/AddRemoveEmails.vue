@@ -8,11 +8,27 @@
     <div class="card">
       <div class="card-content"> 
           <div>
-              <ul>
-                  <li @click.prevent="deleteEmail" v-for="item in emails">
-                       {{ item.address  }} {{item.verified}}
-                  </li>
-              </ul>
+
+
+             <table>
+        <thead>
+          <tr>
+              <th>Email Address</th>
+              <th>Verified</th>
+              <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="(email, index)  in emails">
+            <td>{{ email.address }}</td>
+            <td>{{ email.verifieid ? "Yes" : "No" }}</td>
+            <td><button :data-index="index" @click.prevent="deleteEmail" >Delete</button></td>
+          </tr>
+
+        </tbody>
+      </table>
+             
           </div>
         <div class="row">
           <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
@@ -56,19 +72,32 @@ export default {
   },
   methods: {
     deleteEmail(evt) {
-
-        Meteor.call('accounts.ChangeUsername', {
-          userId: Meteor.userId(), newUsername: this.newUsername
+        Meteor.call('accounts.DeleteEmail', {
+          userId: Meteor.userId(), email: this.emails[evt.currentTarget.dataset.index].address
         }, (err, res) => {
           if (err) {
             this.$toasted.error(err.reason);
           } else {
             this.newUsername = "";
-            this.$toasted.info('Username update successfully');
+            this.$toasted.info('Email has been removed');
           }
       });
         
-    }
+    },
+     addEmail(evt) {
+       console.log('adding a new email')
+        Meteor.call('accounts.AddEmail', {
+          userId: Meteor.userId(), newEmail: this.newEmail
+        }, (err, res) => {
+          if (err) {
+            this.$toasted.error(err.reason);
+          } else {
+            this.newUsername = "";
+            this.$toasted.info('New email has been added');
+          }
+      });
+        
+    },
   }
 };
 </script>

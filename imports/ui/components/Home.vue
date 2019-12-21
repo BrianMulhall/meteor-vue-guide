@@ -19,9 +19,9 @@ export default {
         }
     },
     methods: {
-      
     },
     mounted() {
+      M.AutoInit();
     }
 
 

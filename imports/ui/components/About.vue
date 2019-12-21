@@ -51,7 +51,7 @@ export default {
   methods: {
   },
   mounted() {
-      this.$autorun(() => this.connectionStatus =  Meteor.status().status);
+      this.$autorun(() => this.connectionStatus =  Meteor.status().status.toUpperCase() );
   },
   meteor: {
   }

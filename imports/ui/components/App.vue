@@ -35,12 +35,20 @@
               <router-link tag="li" class="col" :to="{ name: 'person' }">
                 <a>Person</a>
               </router-link>
-              <li><a class="dropdown-trigger" href="#!" data-target="userProfileDropdown">User Profile<i class="material-icons right">arrow_drop_down</i></a></li>
+
+              <li>
+                <a class="dropdown-trigger" href="#!" data-target="userProfileDropdown">
+                  User Profile
+                  <i class="material-icons right">arrow_drop_down</i>
+                </a>
+              </li>
+              
               <li>
                 <router-link :to="{ name: 'about' }">
                 <i class="material-icons">info</i>
                 </router-link>
               </li>
+
               <li>
                 <a class="waves-effect waves-light btn" @click.prevent="logOff"> Log Off </a>
               </li>
@@ -61,8 +69,8 @@
 
     <ul class="sidenav" id="side-menu">
        <template v-if='this.isLoggedIn'>
-                   <router-link tag="li" class="col" :to="{ name: 'books' }">
-            <a>Books</a>
+                   <router-link tag="li" class="col" :to="{ name: 'users' }">
+            <a>Users</a>
           </router-link>
 
           <router-link tag="li" class="col" :to="{ name: 'person' }">
@@ -98,11 +106,6 @@ export default {
       userId: "",
       isLoggedIn: false
     };
-  },
-  mounted() {
-    console.log('mounted starting');
-    $(".dropdown-trigger").dropdown();
-    console.log('mounted done');
   },
   methods: {
     logOff: function(event) {
