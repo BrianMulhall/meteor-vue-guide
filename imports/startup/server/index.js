@@ -11,6 +11,7 @@ import '../../api/accounts/methods.js'
 
 import '../../api/users/server/publications.js'
 import '../../api/roleAssignment/server/publications.js'
+import '../../api/roles/server/publications.js'
 
 import './roles.js'
 import './accounts.js'

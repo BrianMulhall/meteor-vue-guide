@@ -10,6 +10,16 @@ Meteor.methods({
     const userId = Accounts.createUser( { 'email': email });
     Accounts.sendEnrollmentEmail( userId, email );
   },
+  'accounts.UpdateProfile'({ address, city, state, zipcode }) {
+    check(address,String);
+    check(city,String);
+    check(state,String);
+    check(zipcode,String);
+
+    const userId = Accounts.createUser( { 'email': email });
+    Accounts.sendEnrollmentEmail( userId, email );
+  },
+
   'accounts.ChangeUsername'({ userId, newUsername }) {
     check(userId,String);
     check(newUsername, String);
@@ -26,24 +36,15 @@ Meteor.methods({
   'accounts.AddEmail'({ userId, newEmail }) {
     check(userId,String);
     check(newEmail, String);
-    try{
+
     Accounts.addEmail(userId, newEmail, false);
     Accounts.sendVerificationEmail(userId, newEmail);
-    }catch(err){
-      throw new Meteor.Error(err);
-    }
+
   },
   'accounts.DeleteEmail'({ userId, email }) {
     check(userId,String);
     check(email, String);
     
-    console.log('my email is',email)
-    try{
-      Accounts.removeEmail(userId, email)
-    }
-    catch(err){
-      throw new Meteor.Error(err);
-    }
-    
+    Accounts.removeEmail(userId, email)
   }
 });

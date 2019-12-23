@@ -5,32 +5,53 @@
     </div>
        <div class="card">
       <div class="card-content">
-     
-    <table>
-        <thead>
-          <tr>
-              <th>Key</th>
-              <th>Value</th>
-          </tr>
-        </thead>
+       <form @submit.prevent="updateProfile()">
+          <div class="input-field col s12">
+            <label for="address">Address</label>
+            <input
+              id="address"
+              type="text"
+              required
+              v-model.lazy="address"
+              class="validate"
+            />
+          </div>
 
-        <tbody>
-          <tr>
-            <td>Meteor Version</td>
-            <td>{{this.version}}</td>
-          </tr>
-          <tr>
-            <td>Connection Status</td>
-            <td>{{this.connectionStatus}}</td>
-          </tr>
-          <tr>
-            <td>Environment</td>
-            <td>{{this.environment}}</td>
-          </tr>
+          <div class="input-field col s12">
+            <label for="age">City</label>
+            <input
+              id="city"
+              type="number"
+              required
+              min="0"
+              max="120"
+              v-model.number="city"
+              class="validate"
+            />
+          </div>
 
+          <div class="input-field col s12">
+            <label for="height">State</label>
+            <input
+              id="state"
+              v-model.number="state"
+              class="validate"
+            />
+          </div>
 
-        </tbody>
-      </table>
+          <div class="input-field col s12">
+            <label for="weight">Zipcode</label>
+            <input
+              id="zipcode"
+              v-model.number="zipcode"
+              class="validate"
+            />
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+   
       </div>
     </div>
 
@@ -43,17 +64,24 @@ import { Meteor } from "meteor/meteor";
 export default {
   data() {
     return {
-      version: Meteor.release,
-      connectionStatus: undefined,
-      environment: (Meteor.isDevelopment ? "Development" : "Production"),
+     address: "",
+     city: "",
+     state: "",
+     zipcode:""
     };
   },
   methods: {
   },
   mounted() {
-      this.$autorun(() => this.connectionStatus =  Meteor.status().status);
+      
   },
   meteor: {
+       // Subscriptions
+    $subscribe: {
+      // Subscribes to the 'threads' publication with no parameters
+      'userData': [],
+    },
+    
   }
   
 };

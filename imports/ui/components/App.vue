@@ -4,12 +4,12 @@
       <div class="nav-wrapper">
         <router-link class="brand-logo" :to="{ name: 'home' }">
           <i class="material-icons">cloud</i>
-          Susco
+          Meteor Vue App
         </router-link>
         <a href="#" data-target="side-menu" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
-        <!-- Dropdown Structure -->
+        <!-- User Profile Dropdown -->
         <ul id="userProfileDropdown" class="dropdown-content">
            <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
                 <a>Change Username</a>
@@ -19,6 +19,9 @@
               </router-link>
            <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
                 <a>Add/Remove Emails</a>
+          </router-link>
+          <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
+                <a>Update User Profile</a>
               </router-link>
         </ul>
         <ul class="right hide-on-med-and-down">
@@ -28,8 +31,8 @@
                 <a>Create User</a>
               </router-link>
 
-              <router-link tag="li" class="col" :to="{ name: 'users' }" >
-                <a>Users</a>
+              <router-link tag="li" class="col" :to="{ name: 'roleManagement' }" >
+                <a>Role Management</a>
               </router-link>
 
               <router-link tag="li" class="col" :to="{ name: 'person' }">
@@ -42,13 +45,10 @@
                   <i class="material-icons right">arrow_drop_down</i>
                 </a>
               </li>
-              
-              <li>
-                <router-link :to="{ name: 'about' }">
-                <i class="material-icons">info</i>
-                </router-link>
-              </li>
-
+               <router-link tag="li" class="col" :to="{ name: 'about' }">
+               <a> <i class="material-icons">info</i></a>
+              </router-link>
+ 
               <li>
                 <a class="waves-effect waves-light btn" @click.prevent="logOff"> Log Off </a>
               </li>
@@ -69,13 +69,33 @@
 
     <ul class="sidenav" id="side-menu">
        <template v-if='this.isLoggedIn'>
-                   <router-link tag="li" class="col" :to="{ name: 'users' }">
-            <a>Users</a>
-          </router-link>
+                  <router-link tag="li" class="col" :to="{ name: 'createUser' }">
+                <a>Create User</a>
+              </router-link>
 
-          <router-link tag="li" class="col" :to="{ name: 'person' }">
-            <a>Person</a>
-          </router-link>
+              <router-link tag="li" class="col" :to="{ name: 'roleManagement' }" >
+                <a>Role Management</a>
+              </router-link>
+
+              <router-link tag="li" class="col" :to="{ name: 'person' }">
+                <a>Person</a>
+              </router-link>
+
+              <li>
+                <a class="dropdown-trigger" href="#!" data-target="userProfileDropdown">
+                  User Profile
+                  <i class="material-icons right">arrow_drop_down</i>
+                </a>
+              </li>
+               <router-link tag="li" class="col" :to="{ name: 'about' }">
+                <a> <i class="material-icons">info</i></a>
+              </router-link>
+ 
+              <li>
+                <a class="waves-effect waves-light btn" @click.prevent="logOff"> Log Off </a>
+              </li>
+
+
        </template>
        <template v-else >
 

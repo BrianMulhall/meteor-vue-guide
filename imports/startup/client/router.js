@@ -15,50 +15,15 @@ const routes = [
     name: "about",
     component: () => import(/* webpackChunkName: "about" */ '../../ui/components/About.vue')
   },
-  { 
-    path: "/users", 
-    name: "users", 
-    component: () => import(/* webpackChunkName: "users" */ '../../ui/components/Users.vue')
-  },
-  { 
-    path: "/person", 
-    name: "person", 
-    component: () => import(/* webpackChunkName: "person" */ '../../ui/components/Person.vue')
-  },
-  { 
-    path: "/register", 
-    name: "register", 
-    component: () => import(/* webpackChunkName: "register" */ '../../ui/components/Register.vue')
-  },
-  { 
-    path: "/resetPassword/:token", 
-    name: "resetPassword", 
-    component: () => import(/* webpackChunkName: "resetPassword" */ '../../ui/components/ResetPassword.vue')
-  },
-  { 
-    path: "/forgotPassword", 
-    name: "forgotPassword", 
-    component: () => import(/* webpackChunkName: "forgotPassword" */ '../../ui/components/ForgotPassword.vue')
+  {
+    path: "/addRemoveEmails", 
+    name: "addRemoveEmails", 
+    component: () => import(/* webpackChunkName: "addRemoveEmails" */ '../../ui/components/AddRemoveEmails.vue')
   },
   { 
     path: "/createUser", 
     name: "createUser", 
     component: () => import(/* webpackChunkName: "createUser" */ '../../ui/components/CreateUser.vue')
-  },
-  { 
-    path: "/login", 
-    name: "login", 
-    component: () => import(/* webpackChunkName: "login" */ '../../ui/components/Login.vue')
-  },
-  {
-    path: "/verifyEmail/:token", 
-    name: "verifyEmail", 
-    component: () => import(/* webpackChunkName: "verifyEmail" */ '../../ui/components/VerifyEmail.vue')
-  },
-  {
-    path: "/editUserProfile", 
-    name: "editUserProfile", 
-    component: () => import(/* webpackChunkName: "editUserProfile" */ '../../ui/components/EditUserProfile.vue')
   },
   {
     path: "/changeUsername", 
@@ -71,14 +36,59 @@ const routes = [
     component: () => import(/* webpackChunkName: "changePassword" */ '../../ui/components/ChangePassword.vue')
   },
   {
-    path: "/addRemoveEmails", 
-    name: "addRemoveEmails", 
-    component: () => import(/* webpackChunkName: "addRemoveEmails" */ '../../ui/components/AddRemoveEmails.vue')
+    path: "/editUserProfile", 
+    name: "editUserProfile", 
+    component: () => import(/* webpackChunkName: "editUserProfile" */ '../../ui/components/EditUserProfile.vue')
   },
   {
     path: "/enrollAccount/:token", 
     name: "enrollAccount", 
     component: () => import(/* webpackChunkName: "enrollAccount" */ '../../ui/components/EnrollAccount.vue')
+  },
+  { 
+    path: "/forgotPassword", 
+    name: "forgotPassword", 
+    component: () => import(/* webpackChunkName: "forgotPassword" */ '../../ui/components/ForgotPassword.vue')
+  },
+  { 
+    path: "/login", 
+    name: "login", 
+    component: () => import(/* webpackChunkName: "login" */ '../../ui/components/Login.vue')
+  },
+  { 
+    path: "/person", 
+    name: "person", 
+    component: () => import(/* webpackChunkName: "person" */ '../../ui/components/Person.vue')
+  },
+  { 
+    path: "/register", 
+    name: "register", 
+    component: () => import(/* webpackChunkName: "register" */ '../../ui/components/Register.vue')
+  },
+  { 
+    path: "/roleManagement", 
+    name: "roleManagement", 
+    component: () => import(/* webpackChunkName: "roleManagement" */ '../../ui/components/RoleManagement.vue')
+  },
+  { 
+    path: "/resetPassword/:token", 
+    name: "resetPassword", 
+    component: () => import(/* webpackChunkName: "resetPassword" */ '../../ui/components/ResetPassword.vue')
+  },
+  { 
+    path: "/users", 
+    name: "users", 
+    component: () => import(/* webpackChunkName: "users" */ '../../ui/components/Users.vue')
+  },
+  { 
+    path: "/userProfile", 
+    name: "userProfile", 
+    component: () => import(/* webpackChunkName: "userProfile" */ '../../ui/components/UserProfile.vue')
+  },
+  {
+    path: "/verifyEmail/:token", 
+    name: "verifyEmail", 
+    component: () => import(/* webpackChunkName: "verifyEmail" */ '../../ui/components/VerifyEmail.vue')
   },
   { 
     path: "*",
@@ -104,6 +114,7 @@ const router = new VueRouter({
 
 });
 
+
 router.beforeEach(function (to, from, next) {
   if ((to.path !== '/login' && to.path !== 'login' &&
        to.path !== '/register' && to.path !== 'register' &&
@@ -118,6 +129,7 @@ router.beforeEach(function (to, from, next) {
     next()
   }
 })
+
 
 
 export default router;

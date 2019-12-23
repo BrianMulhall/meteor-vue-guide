@@ -2,7 +2,7 @@ if(Meteor.roles.find({}).fetch().length == 0){
     console.log('adding roles')
     Roles.createRole('user');
     Roles.createRole('supervisor');
-    Roles.createRole('siteAdmin');
+    Roles.createRole('admin');
 }
 
 let adminAccount = Accounts.findUserByUsername('admin');

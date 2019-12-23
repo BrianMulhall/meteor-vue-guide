@@ -7,7 +7,7 @@
 
     <div class="card">
       <div class="card-content"> 
-          <div>
+
 
 
              <table>
@@ -15,7 +15,7 @@
           <tr>
               <th>Email Address</th>
               <th>Verified</th>
-              <th>Delete</th>
+              <th></th>
           </tr>
         </thead>
 
@@ -23,14 +23,17 @@
           <tr v-for="(email, index)  in emails">
             <td>{{ email.address }}</td>
             <td>{{ email.verifieid ? "Yes" : "No" }}</td>
-            <td><button :data-index="index" @click.prevent="deleteEmail" >Delete</button></td>
+            <td class="center-align"><button class="btn waves-effect waves-light" :data-index="index" @click.prevent="deleteEmail" >Delete</button></td>
           </tr>
 
         </tbody>
       </table>
-             
-          </div>
-        <div class="row">
+      
+      </div>
+    </div>
+  <div class="card">
+      <div class="card-content"> 
+      <div class="row">
           <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
             <div class="input-field col s12">
                 <label class="active" for="email">Email</label>
@@ -44,8 +47,8 @@
             Add New Email
             <i class="material-icons right">send</i>
           </button>
-      </div>
-    </div>
+          </div>
+          </div>
   </div>
 </template>
 

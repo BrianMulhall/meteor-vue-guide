@@ -6,7 +6,7 @@
        <div class="card">
       <div class="card-content">
      
-    <table>
+    <table class="responsive-table">
         <thead>
           <tr>
               <th>Key</th>

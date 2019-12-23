@@ -61,7 +61,8 @@ export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      isLoggingIn: Meteor.loggingIn()
     };
   },
   methods: {
