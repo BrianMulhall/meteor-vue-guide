@@ -22,6 +22,7 @@ export default {
     },
     mounted() {
       M.AutoInit();
+
     }
 
 

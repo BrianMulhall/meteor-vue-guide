@@ -1,13 +1,14 @@
 // This section sets up some basic app metadata, the entire section is optional.
 App.info({
     id: 'com.susco.meteor',
+    version: '0.1.0',
     name: 'meteor-vue',
-    description: 'MeteorJS application',
+    description: 'Meteor Application',
     author: "Brian Mulhall",
     email: "brian.e.mulhall@gmail.com",
   });
     
-  // Set PhoneGap/Cordova preferences.
+
   App.setPreference('BackgroundColor', '0xff0000ff');
   App.setPreference('HideKeyboardFormAccessoryBar', true);
   App.setPreference('Orientation', 'default');
@@ -19,12 +20,4 @@ App.info({
   App.accessRule('*.googleapis.com/*');
   App.accessRule('*.gstatic.com/*');
   
-  
-  // Add custom tags for a particular PhoneGap/Cordova plugin to the end of the
-  // generated config.xml. 'Universal Links' is shown as an example here.
-  App.appendToConfig(`
-    <universal-links>
-      <host name="localhost:3000" />
-    </universal-links>
-  `);
   
