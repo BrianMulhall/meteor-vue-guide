@@ -40,7 +40,7 @@
               </router-link>
 
               <li>
-                <a class="dropdown-trigger" href="#!" data-target="userProfileDropdown">
+                <a class="userProfile" href="#!" data-target="userProfileDropdown">
                   User Profile
                   <i class="material-icons right">arrow_drop_down</i>
                 </a>
@@ -145,6 +145,7 @@ export default {
     this.$autorun(() => this.isLoggedIn = (Meteor.userId() != null));
     this.$autorun(() => this.userId = Meteor.userId() );
     M.AutoInit();
+
   }
 };
 </script>

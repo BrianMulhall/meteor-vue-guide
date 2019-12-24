@@ -50,10 +50,3 @@ Meteor.startup(() => {
   });
 
 });
-
-Meteor.AppCache.config({
-  chrome: false,
-  firefox: false
-});
-
-

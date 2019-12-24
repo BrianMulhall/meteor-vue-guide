@@ -32,7 +32,6 @@ alanning:roles
 email@1.2.3
 service-configuration@1.0.11
 accounts-github@1.4.2
-appcache@1.2.3
 webapp@1.7.5
 tprzytula:remember-me
 accounts-google@1.3.3
