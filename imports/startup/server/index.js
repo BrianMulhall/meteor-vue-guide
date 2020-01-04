@@ -13,8 +13,11 @@ import '../../api/accounts/methods.js'
 import '../../api/users/server/publications.js'
 
 import '../../api/roleAssignments/server/publications.js'
+import '../../api/roleAssignments/methods.js'
 
 import '../../api/roles/server/publications.js'
+import '../../api/roles/methods.js'
+
 
 import './roles.js'
 import './accounts.js'

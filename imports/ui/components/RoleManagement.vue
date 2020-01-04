@@ -24,25 +24,52 @@
         </form>
       </div>
     </div>
+
+    <div class="card">
+      <div class="card-content">
+        <form @submit.prevent="createRole">
+          <div class="input-field col s12">
+            <input
+              id="newRole"
+              type="text"
+              class="validate"
+              v-model="newRole"
+            />
+            <label>New Role</label>
+          </div>
+
+          <button
+            class="btn waves-effect waves-light"
+            type="submit"
+            :disabled="newRole == '' ? '' : disabled"
+          >
+            Create Roles
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
+import { _ } from "underscore";
 
 export default {
   data() {
     return {
       roles: Roles.getAllRoles().fetch(),
       currentRoles: Roles.getRolesForUser(Meteor.userId()),
-      selectedRoles: []
+      selectedRoles: [],
+      newRole: ""
     };
   },
   methods: {
     updateRole(evt) {
       Meteor.call(
-        "roles.updateRoles",
-        Meteor.userId(),
+        "roles.addRoles",
+        [Meteor.userId()],
         this.selectedRoles,
         (err, res) => {
           if (err) {
@@ -52,6 +79,15 @@ export default {
           }
         }
       );
+    },
+    createRole(evt) {
+      Meteor.call("roles.createRole", this.newRole, (err, res) => {
+        if (err) {
+          this.$toasted.error(err.reason);
+        } else {
+          this.$toasted.info("New role has been created successfully");
+        }
+      });
     }
   },
   mounted() {
