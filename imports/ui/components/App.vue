@@ -142,8 +142,11 @@ export default {
   computed: {
   },
   mounted() {
-    this.$autorun(() => this.isLoggedIn = (Meteor.userId() != null));
-    this.$autorun(() => this.userId = Meteor.userId() );
+    this.$autorun(() => {
+      this.isLoggedIn = (Meteor.userId() != null) 
+      this.userId = Meteor.userId()
+    } );
+    
     M.AutoInit();
 
   }
