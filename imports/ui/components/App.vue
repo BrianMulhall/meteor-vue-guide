@@ -156,7 +156,8 @@ export default {
       this.userId = Meteor.userId();
     });
 
-    M.AutoInit();
+    var elems = document.querySelectorAll(".dropdown-trigger");
+    var instances = M.Dropdown.init(elems, {});
   }
 };
 </script>

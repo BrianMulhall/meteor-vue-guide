@@ -6,7 +6,28 @@
 
     <div class="card">
       <div class="card-content">
-        <form @submit.prevent="updateRole">
+        <form @submit.prevent="createRole">
+          <div class="input-field col s12">
+            <input
+              id="newRole"
+              type="text"
+              class="validate"
+              v-model="newRole"
+            />
+            <label>New Role</label>
+          </div>
+
+          <button class="btn waves-effect waves-light" type="submit">
+            Create Roles
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <form @submit.prevent="deleteRole">
           <div class="input-field col s12">
             <select multiple v-model="selectedRoles">
               <option value="" disabled>Choose your option</option>
@@ -19,31 +40,6 @@
 
           <button class="btn waves-effect waves-light" type="submit">
             Update Roles
-            <i class="material-icons right">send</i>
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-content">
-        <form @submit.prevent="createRole">
-          <div class="input-field col s12">
-            <input
-              id="newRole"
-              type="text"
-              class="validate"
-              v-model="newRole"
-            />
-            <label>New Role</label>
-          </div>
-
-          <button
-            class="btn waves-effect waves-light"
-            type="submit"
-            :disabled="newRole == '' ? '' : disabled"
-          >
-            Create Roles
             <i class="material-icons right">send</i>
           </button>
         </form>

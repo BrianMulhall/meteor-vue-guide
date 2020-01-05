@@ -10,7 +10,7 @@ Meteor.methods({
 
         let existingRoles = Roles.getAllRoles().fetch();
 
-        var existingRole = _.find(existingRoles, function (r) { return r._id == role });
+        var existingRole = _.find(existingRoles, function (r) { return r._id == newRole });
 
         if (existingRole) {
             throw new Meteor.Error('Error', "Role already exists, please choose a unique name");
