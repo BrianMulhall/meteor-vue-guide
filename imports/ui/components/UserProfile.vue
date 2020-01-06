@@ -7,7 +7,7 @@
       <div class="card-content">
         <form @submit.prevent="updateProfile()">
           <div class="input-field col s12">
-            <label for="address">Address</label>
+            <label class="active" for="address">Address</label>
             <input
               id="address"
               type="text"
@@ -18,7 +18,7 @@
           </div>
 
           <div class="input-field col s12">
-            <label for="age">City</label>
+            <label class="active" for="age">City</label>
             <input
               id="city"
               type="text"
@@ -31,17 +31,14 @@
           </div>
 
           <div class="input-field col s12">
-            <label for="height">State</label>
-            <input
-              id="state"
-              type="text"
-              v-model.lazy="state"
-              class="validate"
-            />
+            <label class="active" for="state">State</label>
+            <select id="state" v-model="state">
+              <option v-for="s in states"> {{ s }} </option>
+            </select>
           </div>
 
           <div class="input-field col s12">
-            <label for="weight">Zipcode</label>
+            <label class="active" for="zipcode">Zipcode</label>
             <input
               id="zipcode"
               type="text"
@@ -49,12 +46,13 @@
               class="validate"
             />
           </div>
+
           <button
             class="btn waves-effect waves-light"
             type="submit"
             name="action"
           >
-            Submit
+            Update Profile
             <i class="material-icons right">send</i>
           </button>
         </form>
@@ -72,7 +70,8 @@ export default {
       address: "",
       city: "",
       state: "",
-      zipcode: ""
+      zipcode: "",
+      states: this.$store.getters.getStates
     };
   },
   methods: {
@@ -104,6 +103,8 @@ export default {
         this.zipcode = Meteor.user().zipcode;
       }
     });
+    var elems = document.querySelectorAll("select");
+    var instances = M.FormSelect.init(elems, {});
   },
   meteor: {
     // Subscriptions

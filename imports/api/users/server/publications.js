@@ -4,7 +4,7 @@ const options = {
     address: 1,
     city: 1,
     state: 1,
-    //zipcode: 1,
+    zipcode: 1,
   }
 };
 
