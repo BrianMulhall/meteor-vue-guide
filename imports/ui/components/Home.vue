@@ -16,8 +16,7 @@ export default {
   },
   methods: {},
   mounted() {
-    var elems = document.querySelectorAll(".carousel");
-    var instances = M.Carousel.init(elems, {});
+    M.AutoInit();
   }
 };
 </script>

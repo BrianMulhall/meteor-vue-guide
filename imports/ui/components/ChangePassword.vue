@@ -1,15 +1,17 @@
 <template>
   <div class="container">
-
     <div class="page-header">
       <h1>Update Password</h1>
     </div>
     <div class="card">
       <div class="card-content">
-
-         <ValidationObserver>
+        <ValidationObserver>
           <div class="row">
-            <ValidationProvider v-slot="{ errors }" name="Password" vid="password" >
+            <ValidationProvider
+              v-slot="{ errors }"
+              name="Password"
+              vid="password"
+            >
               <div class="input-field col s12">
                 <label class="active" for="password">Password</label>
                 <input type="password" class="validate" v-model="newPassword" />
@@ -19,30 +21,37 @@
           </div>
 
           <div class="row">
-            <ValidationProvider rules="confirmed:password" name="Confirm Password" v-slot="{ errors }" >
+            <ValidationProvider
+              rules="confirmed:password"
+              name="Confirm Password"
+              v-slot="{ errors }"
+            >
               <div class="input-field col s12">
-                <label class="active" for="confrimPassword">Confirm Password</label>
-                <input type="password" class="validate" v-model="confirmPassword" />
+                <label class="active" for="confrimPassword"
+                  >Confirm Password</label
+                >
+                <input type="password" class="validate" />
                 <span>{{ errors[0] }}</span>
               </div>
             </ValidationProvider>
           </div>
         </ValidationObserver>
 
-        <button @click.prevent="updatePassword" class="btn waves-effect waves-light" type="submit">
-            Update Password
-            <i class="material-icons right">send</i>
-          </button>
-
+        <button
+          @click.prevent="updatePassword"
+          class="btn waves-effect waves-light"
+          type="submit"
+        >
+          Update Password
+          <i class="material-icons right">send</i>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
 import Vue from "vue";
-
 
 export default {
   data() {
@@ -50,23 +59,24 @@ export default {
       newPassword: ""
     };
   },
-  mounted: function(){
-
-  },
-  meteor: {
-  },
+  mounted: function() {},
+  meteor: {},
   methods: {
     updatePassword(evt) {
-           Meteor.call('accounts.ChangePassword', {
-          userId: Meteor.userId(), newPassword: this.newPassword
-        }, (err, res) => {
+      Meteor.call(
+        "accounts.ChangePassword",
+        {
+          userId: Meteor.userId(),
+          newPassword: this.newPassword
+        },
+        (err, res) => {
           if (err) {
             this.$toasted.error(err.reason);
           } else {
-            this.$toasted.info('Password update successfully');
+            this.$toasted.info("Password update successfully");
           }
-      });
-      
+        }
+      );
     }
   }
 };

@@ -9,9 +9,10 @@
         <a href="#" data-target="side-menu" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
+
         <!-- User Profile Dropdown -->
         <ul id="userProfileDropdown" class="dropdown-content">
-          <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
+          <!-- <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
             <a>Change Username</a>
           </router-link>
           <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
@@ -22,8 +23,9 @@
           </router-link>
           <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
             <a>Update User Profile</a>
-          </router-link>
+          </router-link> -->
         </ul>
+
         <ul class="right hide-on-med-and-down">
           <template v-if="this.isLoggedIn">
             <router-link tag="li" class="col" :to="{ name: 'createUser' }">
@@ -38,7 +40,7 @@
               <a>Person</a>
             </router-link>
 
-            <li>
+            <!-- <li>
               <a
                 class="dropdown-trigger"
                 href="#!"
@@ -47,7 +49,20 @@
                 User Profile
                 <i class="material-icons right">arrow_drop_down</i>
               </a>
-            </li>
+            </li> -->
+            <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
+              <a>Change Username</a>
+            </router-link>
+            <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
+              <a>Change Password</a>
+            </router-link>
+            <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
+              <a>Add/Remove Emails</a>
+            </router-link>
+            <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
+              <a>Update User Profile</a>
+            </router-link>
+
             <router-link tag="li" class="col" :to="{ name: 'about' }">
               <a> <i class="material-icons">info</i></a>
             </router-link>
@@ -75,6 +90,7 @@
       </div>
     </nav>
 
+    <!-- SIDE NAV -->
     <ul class="sidenav" id="side-menu">
       <template v-if="this.isLoggedIn">
         <router-link tag="li" class="col" :to="{ name: 'createUser' }">
@@ -89,6 +105,20 @@
           <a>Person</a>
         </router-link>
 
+        <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
+          <a>Change Username</a>
+        </router-link>
+        <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
+          <a>Change Password</a>
+        </router-link>
+        <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
+          <a>Add/Remove Emails</a>
+        </router-link>
+        <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
+          <a>Update User Profile</a>
+        </router-link>
+
+        <!-- 
         <li>
           <a
             class="dropdown-trigger"
@@ -98,7 +128,8 @@
             User Profile
             <i class="material-icons right">arrow_drop_down</i>
           </a>
-        </li>
+        </li> -->
+
         <router-link tag="li" class="col" :to="{ name: 'about' }">
           <a> <i class="material-icons">info</i></a>
         </router-link>
@@ -155,7 +186,7 @@ export default {
       this.isLoggedIn = Meteor.userId() != null;
       this.userId = Meteor.userId();
     });
-
+    M.AutoInit();
     var elems = document.querySelectorAll(".dropdown-trigger");
     var instances = M.Dropdown.init(elems, {});
   }

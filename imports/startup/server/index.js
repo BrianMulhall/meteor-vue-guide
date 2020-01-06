@@ -11,6 +11,7 @@ import '../../api/items/server/publications.js'
 import '../../api/accounts/methods.js'
 
 import '../../api/users/server/publications.js'
+import '../../api/users/methods.js'
 
 import '../../api/roleAssignments/server/publications.js'
 import '../../api/roleAssignments/methods.js'
@@ -20,7 +21,7 @@ import '../../api/roles/methods.js'
 
 
 import './roles.js'
-import './accounts.js'
+import './accounts-config.js'
 import './email-templates.js'
 import './service-config.js'
 import './smtp-config.js'

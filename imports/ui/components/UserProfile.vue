@@ -3,9 +3,9 @@
     <div class="page-header">
       <h1>User Profile</h1>
     </div>
-       <div class="card">
+    <div class="card">
       <div class="card-content">
-       <form @submit.prevent="updateProfile()">
+        <form @submit.prevent="updateProfile()">
           <div class="input-field col s12">
             <label for="address">Address</label>
             <input
@@ -21,11 +21,11 @@
             <label for="age">City</label>
             <input
               id="city"
-              type="number"
+              type="text"
               required
               min="0"
               max="120"
-              v-model.number="city"
+              v-model.lazy="city"
               class="validate"
             />
           </div>
@@ -34,7 +34,8 @@
             <label for="height">State</label>
             <input
               id="state"
-              v-model.number="state"
+              type="text"
+              v-model.lazy="state"
               class="validate"
             />
           </div>
@@ -43,18 +44,22 @@
             <label for="weight">Zipcode</label>
             <input
               id="zipcode"
-              v-model.number="zipcode"
+              type="text"
+              v-model.lazy="zipcode"
               class="validate"
             />
           </div>
-          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <button
+            class="btn waves-effect waves-light"
+            type="submit"
+            name="action"
+          >
+            Submit
             <i class="material-icons right">send</i>
           </button>
         </form>
-   
       </div>
     </div>
-
   </div>
 </template>
 
@@ -64,25 +69,48 @@ import { Meteor } from "meteor/meteor";
 export default {
   data() {
     return {
-     address: "",
-     city: "",
-     state: "",
-     zipcode:""
+      address: "",
+      city: "",
+      state: "",
+      zipcode: ""
     };
   },
   methods: {
+    updateProfile: function(evt) {
+      Meteor.call(
+        "users.updateProfile",
+        {
+          address: this.address,
+          city: this.city,
+          state: this.state,
+          zipcode: this.zipcode
+        },
+        (err, res) => {
+          if (err) {
+            this.$toasted.error(err.reason);
+          } else {
+            this.$toasted.info("User Profile updates successfully");
+          }
+        }
+      );
+    }
   },
   mounted() {
-      
+    this.$autorun(() => {
+      if (Meteor.user()) {
+        this.address = Meteor.user().address;
+        this.city = Meteor.user().city;
+        this.state = Meteor.user().state;
+        this.zipcode = Meteor.user().zipcode;
+      }
+    });
   },
   meteor: {
-       // Subscriptions
+    // Subscriptions
     $subscribe: {
       // Subscribes to the 'threads' publication with no parameters
-      'userData': [],
-    },
-    
+      userData: []
+    }
   }
-  
 };
 </script>
