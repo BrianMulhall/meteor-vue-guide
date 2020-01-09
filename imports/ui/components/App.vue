@@ -12,7 +12,7 @@
 
         <!-- User Profile Dropdown -->
         <ul id="userProfileDropdown" class="dropdown-content">
-          <!-- <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
+          <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
             <a>Change Username</a>
           </router-link>
           <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
@@ -23,7 +23,7 @@
           </router-link>
           <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
             <a>Update User Profile</a>
-          </router-link> -->
+          </router-link>
         </ul>
 
         <ul class="right hide-on-med-and-down">
@@ -40,7 +40,7 @@
               <a>Person</a>
             </router-link>
 
-            <!-- <li>
+            <li>
               <a
                 class="dropdown-trigger"
                 href="#!"
@@ -49,23 +49,7 @@
                 User Profile
                 <i class="material-icons right">arrow_drop_down</i>
               </a>
-            </li> -->
-            <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
-              <a>Change Username</a>
-            </router-link>
-            <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
-              <a>Change Password</a>
-            </router-link>
-            <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
-              <a>Add/Remove Emails</a>
-            </router-link>
-            <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
-              <a>Update User Profile</a>
-            </router-link>
-
-            <router-link tag="li" class="col" :to="{ name: 'about' }">
-              <a> <i class="material-icons">info</i></a>
-            </router-link>
+            </li>
 
             <li>
               <a class="waves-effect waves-light btn" @click.prevent="logOff">
@@ -105,30 +89,32 @@
           <a>Person</a>
         </router-link>
 
-        <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
-          <a>Change Username</a>
-        </router-link>
-        <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
-          <a>Change Password</a>
-        </router-link>
-        <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
-          <a>Add/Remove Emails</a>
-        </router-link>
-        <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
-          <a>Update User Profile</a>
-        </router-link>
-
-        <!-- 
         <li>
           <a
             class="dropdown-trigger"
             href="#!"
-            data-target="userProfileDropdown"
+            data-target="mobileUserProfileDropdown"
           >
             User Profile
             <i class="material-icons right">arrow_drop_down</i>
           </a>
-        </li> -->
+        </li>
+
+        <!-- User Profile Dropdown -->
+        <ul id="mobileUserProfileDropdown" class="dropdown-content">
+          <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
+            <a>Change Username</a>
+          </router-link>
+          <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
+            <a>Change Password</a>
+          </router-link>
+          <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
+            <a>Add/Remove Emails</a>
+          </router-link>
+          <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
+            <a>Update User Profile</a>
+          </router-link>
+        </ul>
 
         <router-link tag="li" class="col" :to="{ name: 'about' }">
           <a> <i class="material-icons">info</i></a>
@@ -187,8 +173,6 @@ export default {
       this.userId = Meteor.userId();
     });
     M.AutoInit();
-    var elems = document.querySelectorAll(".dropdown-trigger");
-    var instances = M.Dropdown.init(elems, {});
   }
 };
 </script>
@@ -202,5 +186,10 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.dropdown-content {
+  width: max-content !important;
+  height: auto !important;
 }
 </style>

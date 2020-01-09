@@ -16,7 +16,7 @@ Meteor.methods({
             throw new Meteor.Error('Error', "Role already exists, please choose a unique name");
         }
 
-        Roles.createRole(role);
+        Roles.createRole(newRole);
     },
     'roles.deleteRole'(role) {
         check(role, String);

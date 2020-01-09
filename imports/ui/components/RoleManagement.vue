@@ -62,19 +62,16 @@ export default {
     };
   },
   methods: {
-    updateRole(evt) {
-      Meteor.call(
-        "roles.addRoles",
-        [Meteor.userId()],
-        this.selectedRoles,
-        (err, res) => {
-          if (err) {
-            this.$toasted.error(err.reason);
-          } else {
-            this.$toasted.info("User's role has been updated successfully");
-          }
+    deleteRole(evt) {
+      Meteor.call("roles.deleteRole", this.selectedRoles[0], (err, res) => {
+        if (err) {
+          this.$toasted.error(err.reason);
+        } else {
+          this.$toasted.info("Role has been deleted successfully");
+          this.selectedRoles = [];
+          this.roles = Roles.getAllRoles().fetch();
         }
-      );
+      });
     },
     createRole(evt) {
       Meteor.call("roles.createRole", this.newRole, (err, res) => {
@@ -82,12 +79,13 @@ export default {
           this.$toasted.error(err.reason);
         } else {
           this.$toasted.info("New role has been created successfully");
+          this.newrole = "";
+          this.roles = Roles.getAllRoles().fetch();
         }
       });
     }
   },
   mounted() {
-    this.roles = Roles.getAllRoles().fetch();
     var elems = document.querySelectorAll("select");
     var instances = M.FormSelect.init(elems, {
       closeOnClick: true,
