@@ -51,6 +51,10 @@
               </a>
             </li>
 
+            <router-link tag="li" class="col" :to="{ name: 'about' }">
+              <a> <i class="material-icons">info</i></a>
+            </router-link>
+
             <li>
               <a class="waves-effect waves-light btn" @click.prevent="logOff">
                 Log Off

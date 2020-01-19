@@ -7,6 +7,7 @@ import Toasted from 'vue-toasted';
 import VueRouter from "vue-router";
 import Vuex from 'vuex';
 
+
 // my application
 import App from '../imports/ui/components/App.vue';
 import router from '../imports/startup/client/router';
@@ -15,9 +16,11 @@ import '../imports/startup/client/global-subscriptions.js';
 // CSS
 import 'bootstrap-social/bootstrap-social.css';
 
+
 // global component registrations
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
+
 
 // plugins
 Vue.use(Vuex);
@@ -31,6 +34,7 @@ Vue.use(Toasted, {
 
 
 Vue.config.productionTip = false;
+Vue.config.silent = true;
 
 import './main.html';
 

@@ -5,16 +5,14 @@
     </div>
     <div class="card">
       <div class="card-content">
-
-          <button
-            @click.prevent="verifyEmail"
-            class="btn waves-effect waves-light"
-            type="button"
-          >
-            Complete Verification
-            <i class="material-icons right">send</i>
-          </button>
-          
+        <button
+          @click.prevent="verifyEmail"
+          class="btn waves-effect waves-light"
+          type="button"
+        >
+          Complete Verification
+          <i class="material-icons right">send</i>
+        </button>
       </div>
     </div>
   </div>
