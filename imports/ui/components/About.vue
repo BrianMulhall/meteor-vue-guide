@@ -62,7 +62,7 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      meteorVersion: Meteor.release,
+      meteorVersion: Meteor.release.split("@")[1],
       connectionStatus: undefined,
       environment: Meteor.isDevelopment ? "Development" : "Production",
       vueVersion: Vue.version

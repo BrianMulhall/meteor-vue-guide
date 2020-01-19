@@ -42,3 +42,4 @@ underscore@1.0.10
 akryum:vue-sass
 http@1.4.2
 coffeescript
+akryum:vue-stylus
