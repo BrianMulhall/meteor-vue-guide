@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor --settings=settings.json",
+    "production": "meteor --settings=settings.json --production",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {

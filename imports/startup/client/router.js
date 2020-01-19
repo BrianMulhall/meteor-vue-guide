@@ -8,87 +8,87 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import(/* webpackChunkName: "home" */ '../../ui/components/Home.vue')
+    component: () => import('../../ui/components/Home.vue')
   },
   {
     path: "/about",
     name: "about",
-    component: () => import(/* webpackChunkName: "about" */ '../../ui/components/About.vue')
+    component: () => import('../../ui/components/About.vue')
   },
   {
     path: "/addRemoveEmails",
     name: "addRemoveEmails",
-    component: () => import(/* webpackChunkName: "addRemoveEmails" */ '../../ui/components/AddRemoveEmails.vue')
+    component: () => import('../../ui/components/AddRemoveEmails.vue')
   },
   {
     path: "/createUser",
     name: "createUser",
-    component: () => import(/* webpackChunkName: "createUser" */ '../../ui/components/CreateUser.vue')
+    component: () => import('../../ui/components/CreateUser.vue')
   },
   {
     path: "/changeUsername",
     name: "changeUsername",
-    component: () => import(/* webpackChunkName: "changeUsername" */ '../../ui/components/ChangeUsername.vue')
+    component: () => import('../../ui/components/ChangeUsername.vue')
   },
   {
     path: "/changePassword",
     name: "changePassword",
-    component: () => import(/* webpackChunkName: "changePassword" */ '../../ui/components/ChangePassword.vue')
+    component: () => import('../../ui/components/ChangePassword.vue')
   },
   {
     path: "/editUserProfile",
     name: "editUserProfile",
-    component: () => import(/* webpackChunkName: "editUserProfile" */ '../../ui/components/EditUserProfile.vue')
+    component: () => import('../../ui/components/EditUserProfile.vue')
   },
   {
     path: "/enrollAccount/:token",
     name: "enrollAccount",
-    component: () => import(/* webpackChunkName: "enrollAccount" */ '../../ui/components/EnrollAccount.vue')
+    component: () => import('../../ui/components/EnrollAccount.vue')
   },
   {
     path: "/forgotPassword",
     name: "forgotPassword",
-    component: () => import(/* webpackChunkName: "forgotPassword" */ '../../ui/components/ForgotPassword.vue')
+    component: () => import('../../ui/components/ForgotPassword.vue')
   },
   {
     path: "/login",
     name: "login",
-    component: () => import(/* webpackChunkName: "login" */ '../../ui/components/Login.vue')
+    component: () => import('../../ui/components/Login.vue')
   },
   {
     path: "/userManagement",
     name: "userManagement",
-    component: () => import(/* webpackChunkName: "person" */ '../../ui/components/UserManagement.vue')
+    component: () => import('../../ui/components/UserManagement.vue')
   },
   {
     path: "/register",
     name: "register",
-    component: () => import(/* webpackChunkName: "register" */ '../../ui/components/Register.vue')
+    component: () => import('../../ui/components/Register.vue')
   },
   {
     path: "/roleManagement",
     name: "roleManagement",
-    component: () => import(/* webpackChunkName: "roleManagement" */ '../../ui/components/RoleManagement.vue')
+    component: () => import('../../ui/components/RoleManagement.vue')
   },
   {
     path: "/resetPassword/:token",
     name: "resetPassword",
-    component: () => import(/* webpackChunkName: "resetPassword" */ '../../ui/components/ResetPassword.vue')
+    component: () => import('../../ui/components/ResetPassword.vue')
   },
   {
     path: "/userProfile",
     name: "userProfile",
-    component: () => import(/* webpackChunkName: "userProfile" */ '../../ui/components/UserProfile.vue')
+    component: () => import('../../ui/components/UserProfile.vue')
   },
   {
     path: "/verifyEmail/:token",
     name: "verifyEmail",
-    component: () => import(/* webpackChunkName: "verifyEmail" */ '../../ui/components/VerifyEmail.vue')
+    component: () => import('../../ui/components/VerifyEmail.vue')
   },
   {
     path: "*",
     name: 'notFound',
-    component: () => import(/* webpackChunkName: "notFound" */ '../../ui/components/NotFound.vue')
+    component: () => import('../../ui/components/NotFound.vue')
   }
 ];
 

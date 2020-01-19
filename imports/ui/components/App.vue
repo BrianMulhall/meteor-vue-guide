@@ -36,8 +36,8 @@
               <a>Role Management</a>
             </router-link>
 
-            <router-link tag="li" class="col" :to="{ name: 'person' }">
-              <a>Person</a>
+            <router-link tag="li" class="col" :to="{ name: 'userManagement' }">
+              <a>User Management</a>
             </router-link>
 
             <li>
@@ -89,8 +89,8 @@
           <a>Role Management</a>
         </router-link>
 
-        <router-link tag="li" class="col" :to="{ name: 'person' }">
-          <a>Person</a>
+        <router-link tag="li" class="col" :to="{ name: 'userManagement' }">
+          <a>User Management</a>
         </router-link>
 
         <li>

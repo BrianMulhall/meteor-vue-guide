@@ -14,7 +14,12 @@
             >
               <div class="input-field col s12">
                 <label class="active" for="password">Password</label>
-                <input type="password" class="validate" v-model="newPassword" />
+                <input
+                  id="password"
+                  type="password"
+                  class="validate"
+                  v-model="password"
+                />
                 <span>{{ errors[0] }}</span>
               </div>
             </ValidationProvider>
@@ -30,7 +35,12 @@
                 <label class="active" for="confrimPassword"
                   >Confirm Password</label
                 >
-                <input type="password" class="validate" />
+                <input
+                  id="confrimPassword"
+                  type="password"
+                  class="validate"
+                  v-model="confirmPassword"
+                />
                 <span>{{ errors[0] }}</span>
               </div>
             </ValidationProvider>
@@ -56,7 +66,8 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      newPassword: ""
+      password: "",
+      confirmPassword: ""
     };
   },
   mounted: function() {},
@@ -67,7 +78,7 @@ export default {
         "accounts.ChangePassword",
         {
           userId: Meteor.userId(),
-          newPassword: this.newPassword
+          newPassword: this.password
         },
         (err, res) => {
           if (err) {
