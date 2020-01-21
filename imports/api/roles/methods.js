@@ -8,15 +8,7 @@ Meteor.methods({
             throw new Meteor.Error('access-denied', "Access Denied: Only Admins can Create a Role");
         }
 
-        let existingRoles = Roles.getAllRoles().fetch();
-
-        var existingRole = _.find(existingRoles, function (r) { return r._id == newRole });
-
-        if (existingRole) {
-            throw new Meteor.Error('Error', "Role already exists, please choose a unique name");
-        }
-
-        Roles.createRole(newRole);
+        Roles.createRole(newRole, { unlessExists: true });
     },
     'roles.deleteRole'(role) {
         check(role, String);

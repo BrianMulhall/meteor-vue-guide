@@ -32,8 +32,12 @@
 
           <div class="input-field col s12">
             <label class="active" for="state">State</label>
-            <select id="state" v-model="state">
-              <option v-for="s in states"> {{ s }} </option>
+            <select
+              id="state"
+              v-model="state"
+              @change="onChange($event.target.value)"
+            >
+              <option v-for="s in states" v-bind:value="s"> {{ s }} </option>
             </select>
           </div>
 
