@@ -16,6 +16,7 @@ import '../imports/startup/client/global-subscriptions.js';
 // CSS
 import 'bootstrap-social/bootstrap-social.css';
 
+import './main.html';
 
 // global component registrations
 Vue.component('ValidationProvider', ValidationProvider);
@@ -36,7 +37,7 @@ Vue.use(Toasted, {
 Vue.config.productionTip = false;
 Vue.config.silent = true;
 
-import './main.html';
+
 
 Meteor.startup(() => {
   new Vue({

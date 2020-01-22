@@ -25,7 +25,7 @@ import './accounts-config.js'
 import './email-templates.js'
 import './service-config.js'
 import './smtp-config.js'
-import './fixtures.js'
+import '../../fixtures/fixtures.js'
 
 
 

@@ -1,25 +1,13 @@
 <template>
-  <div class="container" >
-    
-
-
-  </div>
+  <div class="container"></div>
 </template>
 
-
 <script>
-
 export default {
-    data () {
-        return {
-        }
-    },
-    methods: {
-    },
-    mounted () {
-    }
-
-
-}
-
+  data() {
+    return {};
+  },
+  methods: {},
+  mounted() {}
+};
 </script>

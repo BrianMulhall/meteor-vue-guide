@@ -6,61 +6,70 @@
 
     <div class="card">
       <div class="card-content">
-        <table>
-          <thead>
-            <tr>
-              <th>Email Address</th>
-              <th>Verified</th>
-              <th></th>
-            </tr>
-          </thead>
+        <div class="row">
+          <table>
+            <thead>
+              <tr>
+                <th>Email Address</th>
+                <th>Verified</th>
+                <th></th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <tr v-for="(email, index) in emails">
-              <td>{{ email.address }}</td>
-              <td>{{ email.verifieid ? "Yes" : "No" }}</td>
-              <td class="center-align">
-                <button
-                  class="btn waves-effect waves-light"
-                  :data-index="index"
-                  @click.prevent="deleteEmail"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <tbody>
+              <tr v-for="(email, index) in emails">
+                <td>{{ email.address }}</td>
+                <td>{{ email.verifieid ? "Yes" : "No" }}</td>
+                <td class="center-align">
+                  <button
+                    class="btn waves-effect waves-light"
+                    :data-index="index"
+                    @click.prevent="deleteEmail"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <button data-target="updateModal" class="btn modal-trigger">
+            Add New Email
+          </button>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-content">
-        <div class="row">
-          <ValidationProvider
-            name="email"
-            rules="required|email"
-            v-slot="{ errors }"
-          >
-            <div class="input-field col s12">
-              <label class="active" for="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                class="validate"
-                v-model="newEmail"
-              />
-              <span>{{ errors[0] }}</span>
-            </div>
-          </ValidationProvider>
-        </div>
 
+    <div id="updateModal" class="modal">
+      <div class="modal-content">
+        <ValidationProvider name="email" rules="email" v-slot="{ errors }">
+          <div class="input-field col s12">
+            <label class="active" for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              class="validate"
+              v-model="newEmail"
+            />
+            <span>{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+      </div>
+      <div class="modal-footer">
+        <button
+          @click.prevent="closeModal"
+          class="btn waves-effect waves-light red"
+          type="button"
+        >
+          Close
+        </button>
         <button
           @click.prevent="addEmail"
           class="btn waves-effect waves-light"
           type="button"
         >
-          Add New Email
-          <i class="material-icons right">send</i>
+          Save
         </button>
       </div>
     </div>
@@ -84,6 +93,8 @@ export default {
         this.emails = Meteor.user().emails;
       }
     });
+    let elems = document.querySelectorAll(".modal");
+    let instances = M.Modal.init(elems, {});
   },
   methods: {
     deleteEmail(evt) {
@@ -118,8 +129,16 @@ export default {
             this.newUsername = "";
             this.$toasted.info("New email has been added");
           }
+          let elem = document.querySelectorAll("#updateModal");
+          let instance = M.Modal.getInstance(elem[0]);
+          instance.close();
         }
       );
+    },
+    closeModal(evt) {
+      let elem = document.querySelectorAll("#updateModal");
+      let instance = M.Modal.getInstance(elem[0]);
+      instance.close();
     }
   }
 };
