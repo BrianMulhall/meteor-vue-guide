@@ -19,7 +19,7 @@ import '../../api/roleAssignments/methods.js'
 import '../../api/roles/server/publications.js'
 import '../../api/roles/methods.js'
 
-
+import './ddp.js'
 import './roles.js'
 import './accounts-config.js'
 import './email-templates.js'

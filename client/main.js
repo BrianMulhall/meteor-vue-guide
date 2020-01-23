@@ -13,10 +13,12 @@ import App from '../imports/ui/components/App.vue';
 import router from '../imports/startup/client/router';
 import store from '../imports/startup/client/store';
 import '../imports/startup/client/global-subscriptions.js';
+import '../imports/startup/client/ddp.js';
+
 // CSS
 import 'bootstrap-social/bootstrap-social.css';
 
-import './main.html';
+// import './main.html';
 
 // global component registrations
 Vue.component('ValidationProvider', ValidationProvider);

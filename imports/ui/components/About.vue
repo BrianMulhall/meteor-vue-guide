@@ -6,7 +6,7 @@
     <div class="card">
       <div class="card-content">
         <div class="row">
-          <table class="responsive-table">
+          <table class="responsive-table striped">
             <thead>
               <tr>
                 <th>Key</th>
@@ -17,19 +17,19 @@
             <tbody>
               <tr>
                 <td>Meteor Version</td>
-                <td>{{ this.meteorVersion }}</td>
+                <td>{{ meteorVersion }}</td>
               </tr>
               <tr>
                 <td>Vue Version</td>
-                <td>{{ this.vueVersion }}</td>
+                <td>{{ vueVersion }}</td>
               </tr>
               <tr>
                 <td>Connection Status</td>
-                <td>{{ this.connectionStatus }}</td>
+                <td>{{ connectionStatus }}</td>
               </tr>
               <tr>
                 <td>Environment</td>
-                <td>{{ this.environment }}</td>
+                <td>{{ environment }}</td>
               </tr>
             </tbody>
           </table>
@@ -62,9 +62,6 @@ import Vue from "vue";
 export default {
   data() {
     return {
-      meteorVersion: Meteor.release.split("@")[1],
-      connectionStatus: undefined,
-      environment: Meteor.isDevelopment ? "Development" : "Production",
       vueVersion: Vue.version
     };
   },
@@ -76,12 +73,17 @@ export default {
       Meteor.reconnect();
     }
   },
-  mounted() {
-    this.$autorun(() => {
-      console.log("meteor status is changing");
-      this.connectionStatus = Meteor.status().status.toUpperCase();
-    });
-  },
-  meteor: {}
+  mounted() {},
+  meteor: {
+    connectionStatus() {
+      return Meteor.status().status.toUpperCase();
+    },
+    meteorVersion() {
+      return Meteor.release.split("@")[1];
+    },
+    environment() {
+      return Meteor.isDevelopment ? "Development" : "Production";
+    }
+  }
 };
 </script>
