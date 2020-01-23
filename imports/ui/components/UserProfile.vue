@@ -71,10 +71,6 @@ import { Meteor } from "meteor/meteor";
 export default {
   data() {
     return {
-      address: "",
-      city: "",
-      state: "",
-      zipcode: "",
       states: this.$store.getters.getStates
     };
   },
@@ -99,22 +95,21 @@ export default {
     }
   },
   mounted() {
-    this.$autorun(() => {
-      if (Meteor.user()) {
-        this.address = Meteor.user().address;
-        this.city = Meteor.user().city;
-        this.state = Meteor.user().state;
-        this.zipcode = Meteor.user().zipcode;
-      }
-    });
     var elems = document.querySelectorAll("select");
     var instances = M.FormSelect.init(elems, {});
   },
   meteor: {
-    // Subscriptions
-    $subscribe: {
-      // Subscribes to the 'threads' publication with no parameters
-      userData: []
+    address() {
+      return Meteor.user().address;
+    },
+    city() {
+      return Meteor.user().city;
+    },
+    state() {
+      return Meteor.user().state;
+    },
+    zipcode() {
+      return Meteor.user().zipcode;
     }
   }
 };

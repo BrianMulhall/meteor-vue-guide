@@ -59,11 +59,6 @@ export default {
     };
   },
   mounted() {
-    this.$autorun(() => {
-      if (Meteor.user()) {
-        this.username = Meteor.user().username;
-      }
-    });
     let elems = document.querySelectorAll(".modal");
     let instances = M.Modal.init(elems, {});
   },
@@ -92,6 +87,11 @@ export default {
       let elem = document.querySelectorAll("#updateModal");
       let instance = M.Modal.getInstance(elem[0]);
       instance.close();
+    }
+  },
+  meteor: {
+    username() {
+      return Meteor.user().username;
     }
   }
 };

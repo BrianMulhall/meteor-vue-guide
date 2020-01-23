@@ -50,13 +50,10 @@
 
 <script>
 import Vue from "vue";
-import { _ } from "underscore";
 
 export default {
   data() {
     return {
-      roles: Roles.getAllRoles().fetch(),
-      currentRoles: Roles.getRolesForUser(Meteor.userId()),
       selectedRoles: [],
       newRole: ""
     };
@@ -91,9 +88,14 @@ export default {
       closeOnClick: true,
       hover: true
     });
-    this.$autorun(() => {
-      this.currentRoles = Roles.getRolesForUser(Meteor.userId());
-    });
+  },
+  meteor: {
+    currentRoles() {
+      return Roles.getRolesForUser(Meteor.userId());
+    },
+    roles() {
+      return Roles.getAllRoles().fetch();
+    }
   }
 };
 </script>

@@ -152,10 +152,7 @@ import Vue from "vue";
 
 export default {
   data() {
-    return {
-      userId: "",
-      isLoggedIn: false
-    };
+    return {};
   },
   methods: {
     logOff: function(event) {
@@ -172,11 +169,15 @@ export default {
   },
   computed: {},
   mounted() {
-    this.$autorun(() => {
-      this.isLoggedIn = Meteor.userId() != null;
-      this.userId = Meteor.userId();
-    });
     M.AutoInit();
+  },
+  meteor: {
+    isLoggedIn() {
+      return Meteor.userId() != null;
+    },
+    userId() {
+      return Meteor.userId();
+    }
   }
 };
 </script>

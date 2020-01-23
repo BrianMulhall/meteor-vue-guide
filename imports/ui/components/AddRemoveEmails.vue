@@ -83,16 +83,10 @@ import { Meteor } from "meteor/meteor";
 export default {
   data() {
     return {
-      emails: [],
       newEmail: ""
     };
   },
   mounted() {
-    this.$autorun(() => {
-      if (Meteor.user()) {
-        this.emails = Meteor.user().emails;
-      }
-    });
     let elems = document.querySelectorAll(".modal");
     let instances = M.Modal.init(elems, {});
   },
@@ -139,6 +133,11 @@ export default {
       let elem = document.querySelectorAll("#updateModal");
       let instance = M.Modal.getInstance(elem[0]);
       instance.close();
+    }
+  },
+  meteor: {
+    emails() {
+      return Meteor.user().emails;
     }
   }
 };
