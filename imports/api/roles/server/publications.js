@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 Meteor.publish('roles', function () {
-    return Meteor.roles.find({});
-  })
+  return Meteor.roles.find({});
+});

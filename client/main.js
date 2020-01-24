@@ -1,12 +1,13 @@
+import { Meteor } from 'meteor/meteor';
+
 // Vue
 import Vue from 'vue';
 import VueMeteorTracker from 'vue-meteor-tracker';
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver } from 'vee-validate';
 import Toasted from 'vue-toasted';
-import VueRouter from "vue-router";
+import VueRouter from 'vue-router';
 import Vuex from 'vuex';
-
 
 // my application
 import App from '../imports/ui/components/App.vue';
@@ -18,12 +19,9 @@ import '../imports/startup/client/ddp.js';
 // CSS
 import 'bootstrap-social/bootstrap-social.css';
 
-// import './main.html';
-
 // global component registrations
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
-
 
 // plugins
 Vue.use(Vuex);
@@ -32,23 +30,20 @@ Vue.use(VueMeteorTracker);
 Vue.use(Toasted, {
   duration: 2000,
   position: 'top-right',
-  theme: 'outline'
+  theme: 'outline',
 });
-
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;
 
-
-
 Meteor.startup(() => {
   new Vue({
-    name: "App",
+    name: 'App',
     el: '#app',
     components: {
     },
-    store: store,
-    router: router,
+    store,
+    router,
     ...App,
   });
 });

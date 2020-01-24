@@ -1,30 +1,19 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check'
-import { Accounts } from 'meteor/accounts-base'
+import { check } from 'meteor/check';
+import { Accounts } from 'meteor/accounts-base';
 
 
 Meteor.methods({
   'accounts.CreateUser'({ email }) {
     check(email, String);
-    const userId = Accounts.createUser({ 'email': email });
+    const userId = Accounts.createUser({ email });
     Accounts.sendEnrollmentEmail(userId, email);
   },
-  'accounts.UpdateProfile'({ address, city, state, zipcode }) {
-    check(address, String);
-    check(city, String);
-    check(state, String);
-    check(zipcode, String);
-
-    const userId = Accounts.createUser({ 'email': email });
-    Accounts.sendEnrollmentEmail(userId, email);
-  },
-
   'accounts.ChangeUsername'({ userId, newUsername }) {
     check(userId, String);
     check(newUsername, String);
 
     Accounts.setUsername(userId, newUsername);
-
   },
   'accounts.ChangePassword'({ userId, newPassword }) {
     check(userId, String);
@@ -38,12 +27,11 @@ Meteor.methods({
 
     Accounts.addEmail(userId, newEmail, false);
     Accounts.sendVerificationEmail(userId, newEmail);
-
   },
   'accounts.DeleteEmail'({ userId, email }) {
     check(userId, String);
     check(email, String);
 
-    Accounts.removeEmail(userId, email)
-  }
+    Accounts.removeEmail(userId, email);
+  },
 });

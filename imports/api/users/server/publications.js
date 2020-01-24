@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 
 const options = {
   fields: {
@@ -5,17 +6,16 @@ const options = {
     city: 1,
     state: 1,
     zipcode: 1,
-  }
+  },
 };
 
-Meteor.publish("userData", function () {
+Meteor.publish('userData', function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin', null)) {
     return Meteor.users.find();
   }
-  else if (this.userId) {
+  if (this.userId) {
     return Meteor.users.find({ _id: this.userId }, options);
   }
-  else {
-    this.ready();
-  }
+
+  this.ready();
 });

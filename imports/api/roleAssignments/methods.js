@@ -1,13 +1,17 @@
+import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
+import { Roles } from 'meteor/alanning:roles';
+
 Meteor.methods({
 
   'roles.addRoles'(userIds, roles) {
     check(userIds, [String]);
     check(roles, [String]);
 
-    var loggedInUser = Meteor.user();
+    const loggedInUser = Meteor.user();
 
     if (!loggedInUser || !Roles.userIsInRole(loggedInUser, ['admin'], null)) {
-      throw new Meteor.Error('access-denied', "Access denied");
+      throw new Meteor.Error('access-denied', 'Access denied');
     }
 
     Roles.setUserRoles(userIds, roles);
@@ -17,10 +21,10 @@ Meteor.methods({
     check(userIds, [String]);
     check(roles, [String]);
 
-    var loggedInUser = Meteor.user();
+    const loggedInUser = Meteor.user();
 
     if (!loggedInUser || !Roles.userIsInRole(loggedInUser, ['admin'], null)) {
-      throw new Meteor.Error('access-denied', "Access denied");
+      throw new Meteor.Error('access-denied', 'Access denied');
     }
 
     Roles.removeUsersFromRoles(userIds, roles);
@@ -29,10 +33,10 @@ Meteor.methods({
   'roles.getRolesForUser'(userId) {
     check(userId, String);
 
-    var loggedInUser = Meteor.user();
+    const loggedInUser = Meteor.user();
 
     if (!loggedInUser || !Roles.userIsInRole(loggedInUser, ['admin'], null)) {
-      throw new Meteor.Error('access-denied', "Access denied");
+      throw new Meteor.Error('access-denied', 'Access denied');
     }
     Roles.getGroupsForUser(userId);
   },
@@ -40,12 +44,12 @@ Meteor.methods({
   'roles.getUsersForRoles'(roles) {
     check(roles, [String]);
 
-    var loggedInUser = Meteor.user();
+    const loggedInUser = Meteor.user();
 
     if (!loggedInUser || !Roles.userIsInRole(loggedInUser, ['admin'], null)) {
-      throw new Meteor.Error('access-denied', "Access denied");
+      throw new Meteor.Error('access-denied', 'Access denied');
     }
     Roles.getUsersinRoles(roles);
-  }
+  },
 
-})
+});
