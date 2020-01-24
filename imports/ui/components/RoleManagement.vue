@@ -29,7 +29,7 @@
       <div class="card-content">
         <form @submit.prevent="deleteRole">
           <div class="input-field col s12">
-            <select v-model="selectedRoles">
+            <select v-model="selectedRoles" @change="showUsers($event)">
               <option value="" disabled>Choose your option</option>
               <option v-for="role in this.roles" selected :value="role._id">{{
                 role._id
@@ -37,11 +37,27 @@
             </select>
             <label>Roles</label>
           </div>
+          <table class="responsive-table striped">
+            <thead>
+              <tr>
+                <th>User Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+              </tr>
+            </thead>
 
-          <button class="btn waves-effect waves-light" type="submit">
-            Update Roles
-            <i class="material-icons right">send</i>
-          </button>
+            <tbody>
+              <tr v-for="user in users">
+                <td>{{ user.username }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.state }}</td>
+                <td>{{ user.zipcode }}</td>
+              </tr>
+            </tbody>
+          </table>
         </form>
       </div>
     </div>
@@ -55,7 +71,8 @@ export default {
   data() {
     return {
       selectedRoles: [],
-      newRole: ""
+      newRole: "",
+      users: undefined
     };
   },
   methods: {
@@ -80,6 +97,10 @@ export default {
           this.roles = Roles.getAllRoles().fetch();
         }
       });
+    },
+    showUsers(evt) {
+      console.log(evt.target.value);
+      this.users = Roles.getUsersInRole(evt.target.value);
     }
   },
   mounted() {

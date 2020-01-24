@@ -8,6 +8,7 @@ import { ValidationObserver } from 'vee-validate';
 import Toasted from 'vue-toasted';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
+import { VueReCaptcha } from 'vue-recaptcha-v3';
 
 // my application
 import App from '../imports/ui/components/App.vue';
@@ -32,6 +33,7 @@ Vue.use(Toasted, {
   position: 'top-right',
   theme: 'outline',
 });
+Vue.use(VueReCaptcha, { siteKey: '6LeaidIUAAAAALQPqXWjYskWAiRnL-0SEd2t-Ah1' });
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;

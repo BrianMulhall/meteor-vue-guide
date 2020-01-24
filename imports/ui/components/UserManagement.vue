@@ -10,6 +10,7 @@
             <thead>
               <tr>
                 <th>User Name</th>
+                <th>Email</th>
                 <th>Address</th>
                 <th>City</th>
                 <th>State</th>
@@ -20,6 +21,7 @@
             <tbody>
               <tr v-for="user in users">
                 <td>{{ user.username }}</td>
+                <td>{{ user.emails[0].address }}</td>
                 <td>{{ user.address }}</td>
                 <td>{{ user.city }}</td>
                 <td>{{ user.state }}</td>
