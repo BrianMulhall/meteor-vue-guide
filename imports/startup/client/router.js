@@ -26,19 +26,9 @@ const routes = [
     component: () => import('../../ui/components/CreateUser.vue'),
   },
   {
-    path: '/changeUsername',
-    name: 'changeUsername',
-    component: () => import('../../ui/components/ChangeUsername.vue'),
-  },
-  {
-    path: '/changePassword',
-    name: 'changePassword',
-    component: () => import('../../ui/components/ChangePassword.vue'),
-  },
-  {
-    path: '/editUserProfile',
-    name: 'editUserProfile',
-    component: () => import('../../ui/components/EditUserProfile.vue'),
+    path: '/userProfile',
+    name: 'userProfile',
+    component: () => import('../../ui/components/UserProfile.vue'),
   },
   {
     path: '/enrollAccount/:token',
@@ -74,11 +64,6 @@ const routes = [
     path: '/resetPassword/:token',
     name: 'resetPassword',
     component: () => import('../../ui/components/ResetPassword.vue'),
-  },
-  {
-    path: '/userProfile',
-    name: 'userProfile',
-    component: () => import('../../ui/components/UserProfile.vue'),
   },
   {
     path: '/verifyEmail/:token',

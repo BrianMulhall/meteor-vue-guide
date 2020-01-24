@@ -3,7 +3,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 
 if (Meteor.roles.find({}).fetch().length === 0) {
-  console.log('adding roles');
+  console.log('Adding the initial set of roles to the application');
   Roles.createRole('user');
   Roles.createRole('supervisor');
   Roles.createRole('admin');

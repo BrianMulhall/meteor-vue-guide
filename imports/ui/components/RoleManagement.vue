@@ -29,7 +29,7 @@
       <div class="card-content">
         <form @submit.prevent="deleteRole">
           <div class="input-field col s12">
-            <select multiple v-model="selectedRoles">
+            <select v-model="selectedRoles">
               <option value="" disabled>Choose your option</option>
               <option v-for="role in this.roles" selected :value="role._id">{{
                 role._id

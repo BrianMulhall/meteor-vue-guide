@@ -12,17 +12,11 @@
 
         <!-- User Profile Dropdown -->
         <ul id="userProfileDropdown" class="dropdown-content">
-          <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
-            <a>Change Username</a>
-          </router-link>
-          <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
-            <a>Change Password</a>
+          <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
+            <a>Update User Profile</a>
           </router-link>
           <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
             <a>Add/Remove Emails</a>
-          </router-link>
-          <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
-            <a>Update User Profile</a>
           </router-link>
         </ul>
 
@@ -106,17 +100,11 @@
 
         <!-- User Profile Dropdown -->
         <ul id="mobileUserProfileDropdown" class="dropdown-content">
-          <router-link tag="li" class="col" :to="{ name: 'changeUsername' }">
-            <a>Change Username</a>
-          </router-link>
-          <router-link tag="li" class="col" :to="{ name: 'changePassword' }">
-            <a>Change Password</a>
+          <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
+            <a>Update User Profile</a>
           </router-link>
           <router-link tag="li" class="col" :to="{ name: 'addRemoveEmails' }">
             <a>Add/Remove Emails</a>
-          </router-link>
-          <router-link tag="li" class="col" :to="{ name: 'userProfile' }">
-            <a>Update User Profile</a>
           </router-link>
         </ul>
 
