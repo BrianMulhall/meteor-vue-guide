@@ -6,46 +6,46 @@
 
     <div class="card">
       <div class="card-content">
-        <form id="register" @submit.prevent="register">
-          <div class="row">
-            <ValidationProvider
-              rules="required"
-              name="Username"
-              v-slot="{ errors }"
-            >
-              <div class="input-field col s12">
-                <label class="active" for="username">UserName</label>
-                <input
-                  id="username"
-                  type="text"
-                  class="validate"
-                  v-model="username"
-                />
-                <span>{{ errors[0] }}</span>
-              </div>
-            </ValidationProvider>
-          </div>
+        <ValidationObserver v-slot="{ handleSubmit }">
+          <form id="register" @submit.prevent="handleSubmit(register)">
+            <div class="row">
+              <ValidationProvider
+                rules="required"
+                name="Username"
+                v-slot="{ errors }"
+              >
+                <div class="input-field col s12">
+                  <label class="active" for="username">UserName</label>
+                  <input
+                    id="username"
+                    type="text"
+                    class="validate"
+                    v-model="username"
+                  />
+                  <span>{{ errors[0] }}</span>
+                </div>
+              </ValidationProvider>
+            </div>
 
-          <div class="row">
-            <ValidationProvider
-              name="email"
-              rules="required|email"
-              v-slot="{ errors }"
-            >
-              <div class="input-field col s12">
-                <label class="active" for="email">Email</label>
-                <input
-                  id="email"
-                  type="email"
-                  class="validate"
-                  v-model="email"
-                />
-                <span>{{ errors[0] }}</span>
-              </div>
-            </ValidationProvider>
-          </div>
+            <div class="row">
+              <ValidationProvider
+                name="email"
+                rules="required|email"
+                v-slot="{ errors }"
+              >
+                <div class="input-field col s12">
+                  <label class="active" for="email">Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    class="validate"
+                    v-model="email"
+                  />
+                  <span>{{ errors[0] }}</span>
+                </div>
+              </ValidationProvider>
+            </div>
 
-          <ValidationObserver>
             <div class="row">
               <ValidationProvider
                 v-slot="{ errors }"
@@ -85,13 +85,13 @@
                 </div>
               </ValidationProvider>
             </div>
-          </ValidationObserver>
 
-          <button class="btn waves-effect waves-light" type="submit">
-            Register
-            <i class="material-icons right">send</i>
-          </button>
-        </form>
+            <button class="btn waves-effect waves-light" type="submit">
+              Register
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+        </ValidationObserver>
       </div>
     </div>
   </div>

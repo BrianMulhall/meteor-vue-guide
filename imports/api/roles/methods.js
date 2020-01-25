@@ -25,4 +25,19 @@ Meteor.methods({
 
     Roles.deleteRole(role);
   },
+  'roles.addUserToRole'(userId, role) {
+    check(userId, String);
+    check(role, String);
+
+    const loggedInUser = Meteor.user();
+
+    if (!loggedInUser || !Roles.userIsInRole(loggedInUser, ['admin'], null)) {
+      throw new Meteor.Error('access-denied', 'Access Denied: Only Admins can Delete a Role');
+    }
+
+    console.log('userid', userId);
+    console.log('role', role);
+
+    Roles.addUsersToRoles(userId, role);
+  },
 });

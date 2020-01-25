@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import Vue from 'vue';
 import VueMeteorTracker from 'vue-meteor-tracker';
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
-import { ValidationObserver } from 'vee-validate';
+import { VeeValidate, ValidationObserver } from 'vee-validate';
 import Toasted from 'vue-toasted';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
