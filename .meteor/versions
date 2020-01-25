@@ -1,7 +1,6 @@
 accounts-base@1.5.0
 accounts-facebook@1.3.2
 accounts-github@1.4.2
-accounts-google@1.3.3
 accounts-oauth@1.1.16
 accounts-password@1.5.3
 accounts-twitter@1.4.2
@@ -44,7 +43,6 @@ facebook-oauth@1.6.0
 fetch@0.1.1
 geojson-utils@1.0.10
 github-oauth@1.2.2
-google-oauth@1.2.6
 hot-code-push@1.0.4
 html-tools@1.0.11
 htmljs@1.0.11

@@ -41,63 +41,62 @@
 
         <!-- Password Modal -->
         <div id="updatePasswordModal" class="modal">
-          <ValidationObserver>
-            <div class="row">
-              <ValidationProvider
-                v-slot="{ errors }"
-                name="Password"
-                vid="password"
-              >
-                <div class="input-field col s12">
-                  <label class="active" for="password">Password</label>
-                  <input
-                    id="password"
-                    type="password"
-                    class="validate"
-                    v-model="password"
-                  />
-                  <span>{{ errors[0] }}</span>
-                </div>
-              </ValidationProvider>
-            </div>
+          <ValidationObserver v-slot="{ handleSubmit }">
+            <form @submit.prevent="handleSubmit(updatePassword)">
+              <div class="row">
+                <ValidationProvider
+                  v-slot="{ errors }"
+                  name="Password"
+                  vid="password"
+                >
+                  <div class="input-field col s12">
+                    <label class="active" for="password">Password</label>
+                    <input
+                      id="password"
+                      type="password"
+                      class="validate"
+                      v-model="password"
+                    />
+                    <span>{{ errors[0] }}</span>
+                  </div>
+                </ValidationProvider>
+              </div>
 
-            <div class="row">
-              <ValidationProvider
-                rules="confirmed:password"
-                name="Confirm Password"
-                v-slot="{ errors }"
-              >
-                <div class="input-field col s12">
-                  <label class="active" for="confrimPassword"
-                    >Confirm Password</label
-                  >
-                  <input
-                    id="confrimPassword"
-                    type="password"
-                    class="validate"
-                    v-model="confirmPassword"
-                  />
-                  <span>{{ errors[0] }}</span>
-                </div>
-              </ValidationProvider>
-            </div>
+              <div class="row">
+                <ValidationProvider
+                  rules="confirmed:password"
+                  name="Confirm Password"
+                  v-slot="{ errors }"
+                >
+                  <div class="input-field col s12">
+                    <label class="active" for="confrimPassword"
+                      >Confirm Password</label
+                    >
+                    <input
+                      id="confrimPassword"
+                      type="password"
+                      class="validate"
+                      v-model="confirmPassword"
+                    />
+                    <span>{{ errors[0] }}</span>
+                  </div>
+                </ValidationProvider>
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  @click.prevent="closePasswordModal"
+                  class="btn waves-effect waves-light red"
+                  type="button"
+                >
+                  Close
+                </button>
+                <button class="btn waves-effect waves-light" type="submit">
+                  Save
+                </button>
+              </div>
+            </form>
           </ValidationObserver>
-          <div class="modal-footer">
-            <button
-              @click.prevent="closePasswordModal"
-              class="btn waves-effect waves-light red"
-              type="button"
-            >
-              Close
-            </button>
-            <button
-              @click.prevent="updatePassword"
-              class="btn waves-effect waves-light"
-              type="submit"
-            >
-              Save
-            </button>
-          </div>
         </div>
 
         <button data-target="updateUsernameModal" class="btn modal-trigger">
@@ -240,6 +239,11 @@ export default {
           if (err) {
             this.$toasted.error(err.reason);
           } else {
+            this.password = "";
+            this.confirmPassword = "";
+            let elem = document.querySelectorAll("#updatePasswordModal");
+            let instance = M.Modal.getInstance(elem[0]);
+            instance.close();
             this.$toasted.info("Password update successfully");
           }
         }
@@ -251,6 +255,8 @@ export default {
       instance.close();
     },
     closePasswordModal(evt) {
+      this.password = "";
+      this.confirmPassword = "";
       let elem = document.querySelectorAll("#updatePasswordModal");
       let instance = M.Modal.getInstance(elem[0]);
       instance.close();

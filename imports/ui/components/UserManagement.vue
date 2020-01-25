@@ -32,13 +32,6 @@
                   >
                     Show Roles
                   </button>
-                  <button
-                    @click.prevent="openAddRolesModal(user._id)"
-                    class="btn-small modal-trigger"
-                    data-target="showAllRolesModal"
-                  >
-                    Add Roles
-                  </button>
                 </td>
               </tr>
             </tbody>
@@ -74,34 +67,6 @@
         </button>
       </div>
     </div>
-
-    <!-- Add Roles Modal -->
-    <div id="showAllRolesModal" class="modal">
-      <div class="modal-content">
-        <table class="responsive-table striped">
-          <thead>
-            <tr>
-              <th>Roles</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr v-for="role in rolesToAdd">
-              <td>{{ role._id }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button
-          @click.prevent="closeAllRolesModal"
-          class="btn waves-effect waves-light red"
-          type="button"
-        >
-          Close
-        </button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -122,17 +87,8 @@ export default {
       this.selectedUserId = userId;
       this.roles = Roles.getRolesForUser(userId);
     },
-    openAddRolesModal(userId) {
-      this.selectedUserId = userId;
-      this.rolesToAdd = Roles.getAllRoles();
-    },
     closeRolesModal() {
       let elem = document.querySelectorAll("#showRolesModal");
-      let instance = M.Modal.getInstance(elem[0]);
-      instance.close();
-    },
-    closeAllRolesModal() {
-      let elem = document.querySelectorAll("#showAllRolesModal");
       let instance = M.Modal.getInstance(elem[0]);
       instance.close();
     }

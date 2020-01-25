@@ -19,3 +19,8 @@ App.setPreference('Orientation', 'all', 'ios');
 App.accessRule('*.google.com/*');
 App.accessRule('*.googleapis.com/*');
 App.accessRule('*.gstatic.com/*');
+
+// Pass preferences for a particular PhoneGap/Cordova plugin.
+App.configurePlugin('cordova-plugin-googleplus', {
+  REVERSED_CLIENT_ID: 'com.susco.meteor',
+});
