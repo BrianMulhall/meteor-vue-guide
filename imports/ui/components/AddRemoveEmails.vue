@@ -22,7 +22,7 @@
                 <td>{{ email.verifieid ? "Yes" : "No" }}</td>
                 <td class="center-align">
                   <button
-                    class="btn waves-effect waves-light"
+                    class="btn waves-effect waves-light red"
                     :data-index="index"
                     @click.prevent="deleteEmail"
                   >

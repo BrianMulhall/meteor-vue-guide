@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="page-header">
-      <h1>Users</h1>
+      <h1>User Managment</h1>
     </div>
     <div class="card">
       <div class="card-content">
@@ -10,7 +10,6 @@
             <thead>
               <tr>
                 <th>User Name</th>
-                <th>Email</th>
                 <th>Address</th>
                 <th>City</th>
                 <th>State</th>
@@ -21,7 +20,6 @@
             <tbody>
               <tr v-for="user in users">
                 <td>{{ user.username }}</td>
-                <td>{{ user.emails[0].address }}</td>
                 <td>{{ user.address }}</td>
                 <td>{{ user.city }}</td>
                 <td>{{ user.state }}</td>
@@ -88,7 +86,7 @@
           </thead>
 
           <tbody>
-            <tr v-for="role in allRoles">
+            <tr v-for="role in rolesToAdd">
               <td>{{ role._id }}</td>
             </tr>
           </tbody>
@@ -114,15 +112,19 @@ export default {
   data() {
     return {
       roles: undefined,
-      allRoles: undefined
+      allRoles: undefined,
+      rolesToAdd: undefined,
+      selectedUserId: undefined
     };
   },
   methods: {
     openShowRolesModal(userId) {
+      this.selectedUserId = userId;
       this.roles = Roles.getRolesForUser(userId);
     },
     openAddRolesModal(userId) {
-      this.allRoles = Roles.getAllRoles();
+      this.selectedUserId = userId;
+      this.rolesToAdd = Roles.getAllRoles();
     },
     closeRolesModal() {
       let elem = document.querySelectorAll("#showRolesModal");
