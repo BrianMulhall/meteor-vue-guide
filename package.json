@@ -18,7 +18,7 @@
     "bootstrap-social": "^5.1.1",
     "filog": "^0.2.1",
     "meteor-node-stubs": "^0.4.1",
-    "simpl-schema": "^1.5.6",
+    "simpl-schema": "^1.10.2",
     "underscore": "^1.9.2",
     "vee-validate": "^3.2.2",
     "vue": "^2.6.11",
